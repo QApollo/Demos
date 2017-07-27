@@ -1,4 +1,0 @@
-OCP Chapter 6
-
-Show future SpaceX Launches
-	- API option 1: http://launchlibrary.net/1.2/docs/api.html#launch
