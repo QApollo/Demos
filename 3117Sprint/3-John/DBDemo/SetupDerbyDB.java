@@ -2,35 +2,27 @@ import java.sql.*;
 
 public class SetupDerbyDB {
 	public static void main(String[] args) throws Exception{
-		String url = "jdbc:derby:zoo;create=true";
+		String url = "jdbc:derby:java_exams;create=true";
 		try (Connection conn = DriverManager.getConnection(url);
 				Statement stmt = conn.createStatement()) {
-			stmt.executeUpdate("CREATE TABLE species ("
-					+ "id INTEGER PRIMARY KEY, "
-					+ "name VARCHAR(255), "
-					+ "num_acres DECIMAL)");
-					
-			stmt.executeUpdate("CREATE TABLE animal ("
-					+ "id INTEGER PRIMARY KEY, "
-					+ "species_id INTEGER, "
-					+ "name VARCHAR(255), "
-					+ "date_born TIMESTAMP"
-					+ ")");
-			stmt.executeUpdate("INSERT INTO species VALUES "
-					+ "(1, 'African Elephant', 7.5)");
-			stmt.executeUpdate("INSERT INTO species VALUES "
-					+ "(2, 'Zebra', 1.2)");
-					
-			stmt.executeUpdate("INSERT INTO animal VALUES "
-					+ "(1, 1, 'Elsa', '2001-05-06 02:15:00')");
-			stmt.executeUpdate("INSERT INTO animal VALUES "
-					+ "(2, 2, 'Zelda', '2002-08-15 09:12:00')");
-			stmt.executeUpdate("INSERT INTO animal VALUES "
-					+ "(3, 1, 'Ester', '2002-09-09 19:36:00')");
-			stmt.executeUpdate("INSERT INTO animal VALUES "
-					+ "(4, 1, 'Eddie', '2010-06-08 01:24:00')");
-			stmt.executeUpdate("INSERT INTO animal VALUES "
-					+ "(5, 2, 'Zoe', '2005-11-12 03:44:00')");
-		}
+			createExamStatTable(stmt);
+		}	
+	}
+	
+	private static void createExamStatTable(Statement stmt) throws SQLException {
+		stmt.executeUpdate("CREATE TABLE oca_member ("
+				+ "id INTEGER PRIMARY KEY, "
+				+ "name VARCHAR(255), "
+				+ "score INTEGER, "
+				+ "exam_date DATE)");
+				
+		stmt.executeUpdate("INSERT INTO oca_member VALUES "
+				+ "(1, 'Robbert', 85, '2017-06-01')");
+		stmt.executeUpdate("INSERT INTO oca_member VALUES "
+				+ "(2, 'John', 90, '2017-05-03')");
+		stmt.executeUpdate("INSERT INTO oca_member VALUES "
+				+ "(3, 'Nik', 71, '2017-01-11')");
+		stmt.executeUpdate("INSERT INTO oca_member VALUES "
+				+ "(4, 'Marcel', 88, '2017-01-11')");
 	}
 }
