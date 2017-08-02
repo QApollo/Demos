@@ -1,7 +1,6 @@
 import debug.Debug;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Exceptions {
@@ -27,8 +26,14 @@ public class Exceptions {
     }
 
     private void checkInput(String input) {
-        List<String> code = new ArrayList<>();
+        String[] code = new String[0];
 
-        Debug.log(input.split(""));
+        code = input.split("");
+
+        // Get length of the input
+        Debug.log(code.length);
+
+        // Get specific index
+        Debug.log(code[0]);
     }
 }
