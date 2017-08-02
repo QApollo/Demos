@@ -34,9 +34,9 @@ public class ClassDesign {
         return charList;
     }
 
-    private void displayCharacters(ArrayList<Character> charList) {
+    private void displayCharacters(List<Character> charList) {
         for (Character c : charList) {
-            System.out.println(LINEBREAK + MARKER + c.name);
+            System.out.println(LINEBREAK + MARKER + c.getName());
 
             System.out.println(LINEBREAK + ATKOPTIONS);
             c.attackOptions();

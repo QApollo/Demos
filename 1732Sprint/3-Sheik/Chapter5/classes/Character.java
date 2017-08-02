@@ -2,10 +2,14 @@ package classes;
 
 public abstract class Character {
 
-    private String name;
+    protected String name;
 
     public Character() {
         name = "Character";
+    }
+
+    public String getName() {
+        return name;
     }
 
     public abstract void attackOptions();
