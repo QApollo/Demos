@@ -1,4 +1,4 @@
-package src.main.resources;
+package debug;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-import src.main.resources.Debug;
+import debug.Debug;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +29,6 @@ public class Exceptions {
     private void checkInput(String input) {
         List<String> code = new ArrayList<>();
 
-        Debug.log(input);
+        Debug.log(input.split(""));
     }
 }
