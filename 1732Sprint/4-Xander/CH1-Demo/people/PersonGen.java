@@ -16,7 +16,7 @@ public class PersonGen {
 
   public void setRandomName() {
     Random r = new Random();
-    this.name = this.nameArray[r.nextInt(this.nameArray.length - 1) + 0];
+    this.name = this.nameArray[r.nextInt(this.nameArray.length) + 0];
   }
 
   public String getName() {
