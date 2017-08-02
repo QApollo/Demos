@@ -2,7 +2,7 @@ package classes;
 
 public abstract class Character {
 
-    public String name;
+    private String name;
 
     public Character() {
         name = "Character";
