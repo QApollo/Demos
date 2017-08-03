@@ -4,7 +4,7 @@
 In chapter 4 I have learned a lot about methods and incapsulation. In this small demo I'll present a small application that will highlight them all.
 
 ### Methods
-![Method signature](http://imgur.com/jwtsifM)
+![Method signature](http://i.imgur.com/jwtsifM.jpg)
 
 #### Order of Initialization
 ```
