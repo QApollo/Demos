@@ -8,13 +8,13 @@ In chapter 4 I have learned a lot about methods and incapsulation. In this small
 
 #### Order of Initialization
 ```
-// 1. Superclass (This will be explaind in chapter 5)
+// 1. Superclass (This will be explained in chapter 5)
 // 2. Static variables 
 // 3. Instance variables
 // 4. Constructor
 ```
 
-### Incapsulation
+### Encapsulation
 ```
 // Class Artist
 private String name;
