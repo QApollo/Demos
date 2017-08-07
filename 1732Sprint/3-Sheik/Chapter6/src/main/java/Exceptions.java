@@ -35,5 +35,9 @@ public class Exceptions {
 
         // Get specific index
         Debug.log(code[0]);
+
+        for (i = 0; i < code.length; i++) {
+            Debug.log(code[i]);
+        }
     }
 }
