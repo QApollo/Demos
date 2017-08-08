@@ -5,11 +5,10 @@ import java.util.*;
 public class Zakmon {
 
   private String species;
-
-  public int health = 100;
+  private int health = 100;
   private int attackStat = 100;
   private int defenseStat = 100;
-  public boolean isDefending;
+  private boolean isDefending;
 
   //constructor which calls the setStats function with modifiers based on the species
   public Zakmon(String species) {
@@ -69,6 +68,10 @@ public class Zakmon {
   //return species
   public String getSpecies() {
     return this.species;
+  }
+
+  public boolean isDefending() {
+    return this.isDefending;
   }
 
   //applies damage parameter to objects health

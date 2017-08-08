@@ -7,7 +7,6 @@ public class GameManager {
   public static void main(String[] args) {
     GameManager gm = new GameManager();
 
-
     gm.greeting();
     gm.selectZakmonText();
     Zakmon playerMon = new Zakmon(gm.selectZakmon());
@@ -21,17 +20,17 @@ public class GameManager {
     int turn = 1; //turn counter even turns are CPU. odd turns are player
 
     //battle loop
-    while(playerMon.getHealthStat() > 0 && cpuMon.getHealthStat() > 0) {
+    while (playerMon.getHealthStat() > 0 && cpuMon.getHealthStat() > 0) {
       battleStatus(playerMon, cpuMon);
 
       try {
-        if(turn % 2 == 0) { //handles CPU moves
+        if (turn % 2 == 0) { //handles CPU moves
           cpuSelectMove(playerMon, cpuMon);
         } else { //handles player moves
           playerSelectMove(playerMon, cpuMon);
         }
-      } catch(Exception e) {
-        System.out.println("Your "+ playerMon.getSpecies() + "Does not understand this move and loses their turn");
+      } catch (Exception e) {
+        System.out.println("Your "+ playerMon.getSpecies() + " does not understand this move and loses their turn");
         sc.nextLine();
       }
       turn++; //Increments turn amount
@@ -43,11 +42,11 @@ public class GameManager {
     Random r = new Random();
     int move = r.nextInt(3) + 1;
 
-    if(playerMon.isDefending == true) { //remove defend if player was defending
+    if (playerMon.isDefending()) { //remove defend if player was defending
       playerMon.removeDefend();
     }
 
-    if(move == 1) { //decides on a move and does it
+    if (move == 1) { //decides on a move and does it
       int damage = cpuMon.attack(playerMon.getDefenseStat());
       playerMon.takeDamage(damage);
       System.out.println(System.lineSeparator() + "The enemy attacked and dealt " + damage + " damage" + System.lineSeparator());
@@ -63,19 +62,19 @@ public class GameManager {
     int input;
     playerMoveSelectMessage();
 
-    if(cpuMon.isDefending == true) { //removes CPU defense if cpu was defending
+    if (cpuMon.isDefending()) { //removes CPU defense if cpu was defending
       cpuMon.removeDefend();
     }
 
     input = sc.nextInt();
-    if(input == 1) { //Player chooses a move and executes it
+    if (input == 1) { //Player chooses a move and executes it
       int damage = playerMon.attack(cpuMon.getDefenseStat());
       cpuMon.takeDamage(damage);
       System.out.println(System.lineSeparator() + "You attacked and dealt " + damage + " Damage");
-    } else if(input == 2) {
+    } else if (input == 2) {
       playerMon.defend();
       System.out.println(System.lineSeparator() + "You defended");
-    } else if(input == 3) {
+    } else if (input == 3) {
       System.out.println("You can't run this is an arena battle!");
     } else {
       System.out.println("Invalid move, Your zakMon dozes around and loses a turn");
@@ -83,7 +82,7 @@ public class GameManager {
   }
 
   private void winOrLoseMessage(Zakmon playerMon, Zakmon cpuMon) {
-    if(cpuMon.getHealthStat() <= 0) {
+    if (cpuMon.getHealthStat() <= 0) {
       System.out.println("You won the battle!" + System.lineSeparator() + "You've earned 100 zakCoin$");
     } else {
       System.out.println("You lost the battle!" + System.lineSeparator() + "Doesn't seem like you have what you need to become a zakMon master");
@@ -95,19 +94,19 @@ public class GameManager {
   private String selectZakmon() {
     boolean valid = false;
     int input = 0;
-    while(!valid) {
+    while (!valid) {
       try {
         input = sc.nextInt();
 
         /* chose to take an value from an array instead of hard coding the zakmon in a if or switch case
           would make it easier to add other zakmon by just adding them to the array and in the zakmon class add anothercase in the switch case
         */
-        if(input <= speciesArray.length && input > 0) {
+        if (input <= speciesArray.length && input > 0) {
           valid = true;
         } else {
           System.out.println("Invalid zakmon chosen choose: 1) 2) or 3)");
         }
-      } catch(Exception e) {
+      } catch (Exception e) {
         System.out.println("This isn't an ABC question. Please respect that."
         +System.lineSeparator()+
         "Choose: 1) 2) or 3)");
@@ -167,7 +166,7 @@ public class GameManager {
   }
 
   private void battleStatus(Zakmon playerMon, Zakmon cpuMon) {
-    System.out.println(System.lineSeparator() + "your health is:" + playerMon.getHealthStat());
+    System.out.println(System.lineSeparator() + "Your health is:" + playerMon.getHealthStat());
     System.out.println("The enemies health is: " + cpuMon.getHealthStat() + System.lineSeparator());
   }
 
