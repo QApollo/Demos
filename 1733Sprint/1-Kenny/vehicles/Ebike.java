@@ -1,5 +1,7 @@
 package vehicles;
-import vehicles.*;
+
+import vehicles.Bike;
+import vehicles.Electric;
 
 public class Ebike extends Bike implements Electric {
   	private double batteryLevel;
@@ -18,4 +20,8 @@ public class Ebike extends Bike implements Electric {
     	return batteryLevel;
     }
 
+    public void move() {
+        System.out.println("The vehicle named " + name + " is moving with a speed of: " + speed);
+        System.out.println("Remaining battery: " + getBatteryLevel() + "%");
+    }
 }

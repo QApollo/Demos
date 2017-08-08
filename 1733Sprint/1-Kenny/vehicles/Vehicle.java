@@ -2,9 +2,6 @@ package vehicles;
 
 public abstract class Vehicle {
     protected int speed;
-    protected int seats;
-    protected boolean trunk;
-    protected int wheels;
     protected String name;
 
     public void move() {

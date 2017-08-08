@@ -1,5 +1,7 @@
 package vehicles;
-import vehicles.*;
+
+import vehicles.Car;
+import vehicles.Electric;
 
 public class Tesla extends Car implements Electric {
   	private double batteryLevel;
@@ -18,4 +20,8 @@ public class Tesla extends Car implements Electric {
     	return batteryLevel;
     }
 
+    public void move() {
+        System.out.println("The vehicle named " + name + " is moving with a speed of: " + speed);
+        System.out.println("Remaining battery: " + getBatteryLevel() + "%");
+    }
 }
