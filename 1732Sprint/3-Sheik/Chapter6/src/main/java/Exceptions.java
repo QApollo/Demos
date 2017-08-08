@@ -6,15 +6,17 @@ import java.util.Scanner;
 public class Exceptions {
 
     private static final Scanner SCANNER = new Scanner(System.in);
+    private final int CODELENGTH = 4;
+    private final String[] CODE = {"A", "1", "B", "2"};
 
     public static void main(String[] args) {
-        Exceptions e = new Exceptions();
+        Exceptions exceptions = new Exceptions();
     }
 
     public Exceptions() {
         displayMessage();
         String input = getInput();
-        checkInput(input);
+        checkCode(input);
     }
 
     private void displayMessage() {
@@ -25,19 +27,43 @@ public class Exceptions {
         return SCANNER.next();
     }
 
-    private void checkInput(String input) {
-        String[] code = new String[0];
+    private void checkCode(String input) {
+        String[] inputCode = new String[0];
+        inputCode = input.split("");
+        checkLength(inputCode);
+    }
 
-        code = input.split("");
+    private void checkLength(String[] inputCode) {
+        for (int i = 0; i < inputCode.length; i++) {
+            try {
+                validateInput(inputCode[i], CODE[i], i);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println(i + ":");
+                e.printStackTrace();
+            }
+        }
+    }
 
-        // Get length of the input
-        Debug.log(code.length);
-
-        // Get specific index
-        Debug.log(code[0]);
-
-        for (i = 0; i < code.length; i++) {
-            Debug.log(code[i]);
+    private void validateInput(String inputCode, String code, int digit) {
+        if (digit == 0 || digit == 2) {
+            if (inputCode.equals(code)) {
+                System.out.println(digit + ": Digit correct");
+            } else {
+                System.out.println(digit + ": Digit incorrect");
+            }
+        } else {
+            try {
+                Integer.parseInt(inputCode);
+                Integer.parseInt(code);
+                if (inputCode.equals(code)) {
+                    System.out.println(digit + ": Digit correct");
+                } else {
+                    System.out.println(digit + ": Digit incorrect");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println(digit + ":");
+                e.printStackTrace();
+            }
         }
     }
 }
