@@ -45,24 +45,20 @@ public class Exceptions {
     }
 
     private void validateInput(String inputCode, String code, int digit) {
-        if (digit == 0 || digit == 2) {
+        try {
+            Integer.parseInt(inputCode);
+            Integer.parseInt(code);
+
             if (inputCode.equals(code)) {
                 System.out.println(digit + ": Digit correct");
             } else {
                 System.out.println(digit + ": Digit incorrect");
             }
-        } else {
-            try {
-                Integer.parseInt(inputCode);
-                Integer.parseInt(code);
-                if (inputCode.equals(code)) {
-                    System.out.println(digit + ": Digit correct");
-                } else {
-                    System.out.println(digit + ": Digit incorrect");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println(digit + ":");
-                e.printStackTrace();
+        } catch (NumberFormatException e) {
+            if (inputCode.equals(code)) {
+                System.out.println(digit + ": Letter correct");
+            } else {
+                System.out.println(digit + ": Letter incorrect");
             }
         }
     }
