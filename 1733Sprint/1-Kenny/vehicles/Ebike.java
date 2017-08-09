@@ -4,10 +4,10 @@ import vehicles.Bike;
 import vehicles.Electric;
 
 public class Ebike extends Bike implements Electric {
-  	private double batteryLevel;
+    private double batteryLevel;
     // Constructor
     public Ebike() {
-    	setBatteryLevel(80);
+        setBatteryLevel(80);
         setSpeed(2);
         setName("Diva E-Go");
     }
