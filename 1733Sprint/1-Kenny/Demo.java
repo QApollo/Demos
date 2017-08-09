@@ -7,9 +7,11 @@ import vehicles.Batavus;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Demo {
 	private List<Vehicle> vehicles = new ArrayList<Vehicle>();
+	Scanner sc = new Scanner(System.in);
 	// Main
 	public static void main(String args[]) {
 		Demo demo = new Demo();
@@ -23,7 +25,7 @@ public class Demo {
 	}
 
 	private void greeting() {
-		System.out.println("OCA Chapter 5 demo. Here is a list of vehicles");
+		System.out.println("OCA Chapter 6 demo. Here is a list of vehicles");
 	}
 
 	private void createList() {
@@ -38,10 +40,39 @@ public class Demo {
 	}
 
 	private void showVehicles() {
-		for (Vehicle v : vehicles) {
-			System.out.println("----------------------------------------------------------------");
-			v.move();
-		}
+		try {
+			int i = 0;
+			for (Vehicle v : vehicles) {
+				// v = null;
+				System.out.println(i + ") " + vehicles.get(i).getName());
+				// System.out.println("----------------------------------------------------------------");
+				// v.move();
+				i++;
+			}
+		} catch (NullPointerException e) {
+			System.out.println("The variable is NULL");
+		} 
+		System.out.println("----------------------------------------------------------------");
+		System.out.println("Pick a option");
+		checkInput();
 	}
 
+	private void checkInput() {
+   		try {
+		    String input = sc.next();
+		    int result = Integer.parseInt(input);
+		    showResult(result);   
+	    } catch (NumberFormatException e) {
+	    	System.out.println("Please enter a number");
+	    }
+    }
+
+    private void showResult(int selection) {
+	    // System.out.println(selection);
+		try {
+			vehicles.get(selection).move();
+		} catch(IndexOutOfBoundsException e) {
+			System.out.println("The number is not valid.");
+		}
+    }
 }
