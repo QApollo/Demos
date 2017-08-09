@@ -68,7 +68,6 @@ public class Demo {
     }
 
     private void showResult(int selection) {
-	    // System.out.println(selection);
 		try {
 			vehicles.get(selection).move();
 		} catch(IndexOutOfBoundsException e) {
