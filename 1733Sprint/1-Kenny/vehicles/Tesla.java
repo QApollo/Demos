@@ -9,7 +9,7 @@ public class Tesla extends Car implements Electric {
     public Tesla() {
     	setBatteryLevel(100);
     	setSpeed(15);
-        setName("Model X");
+    	setName("Model X");
     }
 
     public void setBatteryLevel(double batteryLevel) {
