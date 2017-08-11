@@ -33,7 +33,7 @@ public class GameManager {
           }
 
           move = selectMove(playerMon, cpuMon, false);
-          executeMove(playerMon, cpuMon, move, false);
+          executeMove(cpuMon, playerMon, move);
         } else {
           if (cpuMon.isDefending()) {
             cpuMon.removeDefend();
@@ -41,7 +41,7 @@ public class GameManager {
 
           playerMoveSelectMessage();
           move = selectMove(playerMon, cpuMon, true);
-          executeMove(playerMon, cpuMon, move, true);
+          executeMove(playerMon, cpuMon, move);
         }
       } catch (Exception e) {
         System.out.println("Your "+ playerMon.getSpecies() + " does not understand this move and loses their turn");
@@ -68,37 +68,22 @@ public class GameManager {
     }
   }
 
-  private void executeMove(Zakmon playerMon, Zakmon cpuMon, int move, boolean odd) {
-    if (odd) {
-      switch (move) {
-        case 1:
-          cpuMon.takeDamage(playerMon.attack(cpuMon.getDefenseStat()));
-          break;
-        case 2:
-          playerMon.defend();
-          break;
-        case 3:
-          System.out.println("You can't run this is an arena battle!");
-          break;
-        default:
-          System.out.println("Invalid move, Your zakMon dozes around and loses a turn");
-          break;
+  private void executeMove(Zakmon currentTurnMon, Zakmon attackedMon, int move) {
+    switch (move) {
+      case 1:
+        attackedMon.takeDamage(currentTurnMon.attack(attackedMon.getDefenseStat()));
+        break;
+      case 2:
+        currentTurnMon.defend();
+        break;
+      case 3:
+        System.out.println( currentTurnMon.getSpecies() +" can't run this is an arena battle!");
+        break;
+      default:
+        System.out.println("Invalid move, Your zakMon dozes around and loses a turn");
+        break;
       }
-    } else {
-      switch(move) {
-        case 1:
-          playerMon.takeDamage(cpuMon.attack(playerMon.getDefenseStat()));
-          break;
-        case 2:
-          cpuMon.defend();
-          break;
-        case 3:
-          System.out.println("The enemy " + cpuMon.getSpecies() + " tries to run but it failed.");
-          break;
-        }
     }
-
-  }
 
   /*-----------------selecting---------------------*/
   private void populateSpeciesList() {
