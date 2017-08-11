@@ -1,6 +1,6 @@
-import zakmon.*;
 import java.util.*;
-import java.time.*;
+import zakmon.Zakmon;
+import java.time.LocalTime;
 
 public class GameManager {
   private List<String> speciesList = new ArrayList<>();
@@ -21,80 +21,83 @@ public class GameManager {
 
   private void battleManager(Zakmon playerMon, Zakmon cpuMon) {
     int turn = 1;
+    int move;
 
     while (playerMon.getHealthStat() > 0 && cpuMon.getHealthStat() > 0) {
       battleStatus(playerMon, cpuMon);
 
       try {
         if (turn % 2 == 0) {
-          cpuSelectMove(playerMon, cpuMon);
+          if (playerMon.isDefending()) {
+            playerMon.removeDefend();
+          }
+
+          move = selectMove(playerMon, cpuMon, false);
+          executeMove(playerMon, cpuMon, move, false);
         } else {
-          playerSelectMove(playerMon, cpuMon);
+          if (cpuMon.isDefending()) {
+            cpuMon.removeDefend();
+          }
+
+          playerMoveSelectMessage();
+          move = selectMove(playerMon, cpuMon, true);
+          executeMove(playerMon, cpuMon, move, true);
         }
       } catch (Exception e) {
         System.out.println("Your "+ playerMon.getSpecies() + " does not understand this move and loses their turn");
         sc.nextLine();
       }
+
       turn++;
     }
+
     winOrLoseMessage(playerMon, cpuMon);
   }
 
-  private void cpuSelectMove(Zakmon playerMon, Zakmon cpuMon) {
-    Random r = new Random();
-    int move = r.nextInt(3) + 1;
+  private int selectMove(Zakmon playerMon, Zakmon cpuMon, boolean odd) {
+    if (odd) {
+      int move;
+      move = sc.nextInt();
 
-    if (playerMon.isDefending()) {
-      playerMon.removeDefend();
-    }
+      return move;
+    }else {
+      Random r = new Random();
+      int move = r.nextInt(3) + 1;
 
-    if (move == 1) {
-      int damage = cpuMon.attack(playerMon.getDefenseStat());
-      playerMon.takeDamage(damage);
-      if (cpuMon.getSpecies().equals("Rupspie")) {
-        System.out.println(System.lineSeparator() + "The enemy Rupsie crawls towards you inflicting psychological damage for " + damage + " damage" + System.lineSeparator());
-      } else {
-        System.out.println(System.lineSeparator() + "The enemy attacked and dealt " + damage + " damage" + System.lineSeparator());
-      }
-    } else if (move == 2) {
-      cpuMon.defend();
-      System.out.println(System.lineSeparator() + "The opponent defended" + System.lineSeparator());
-    } else if (move == 3) {
-      System.out.println("The enemy " + cpuMon.getSpecies() + " tries to run but it failed.");
+      return move;
     }
   }
 
-  private void playerSelectMove(Zakmon playerMon, Zakmon cpuMon) {
-    int input;
-    playerMoveSelectMessage();
-
-    if (cpuMon.isDefending()) {
-      cpuMon.removeDefend();
-    }
-
-    input = sc.nextInt();
-    switch (input) {
-      case 1:
-        int damage = playerMon.attack(cpuMon.getDefenseStat());
-        cpuMon.takeDamage(damage);
-
-        if (playerMon.getSpecies().equals("Rupspie")) {
-          System.out.println(System.lineSeparator() + "Rupsie crawls towards it's opponent inflicting psychological damge for " + damage + " Damage");
-        } else {
-          System.out.println(System.lineSeparator() + "You attacked and dealt " + damage + " Damage");
+  private void executeMove(Zakmon playerMon, Zakmon cpuMon, int move, boolean odd) {
+    if (odd) {
+      switch (move) {
+        case 1:
+          cpuMon.takeDamage(playerMon.attack(cpuMon.getDefenseStat()));
+          break;
+        case 2:
+          playerMon.defend();
+          break;
+        case 3:
+          System.out.println("You can't run this is an arena battle!");
+          break;
+        default:
+          System.out.println("Invalid move, Your zakMon dozes around and loses a turn");
+          break;
+      }
+    } else {
+      switch(move) {
+        case 1:
+          playerMon.takeDamage(cpuMon.attack(playerMon.getDefenseStat()));
+          break;
+        case 2:
+          cpuMon.defend();
+          break;
+        case 3:
+          System.out.println("The enemy " + cpuMon.getSpecies() + " tries to run but it failed.");
+          break;
         }
-        break;
-      case 2:
-        playerMon.defend();
-        System.out.println(System.lineSeparator() + "You defended");
-        break;
-      case 3:
-        System.out.println("You can't run this is an arena battle!");
-        break;
-      default:
-        System.out.println("Invalid move, Your zakMon dozes around and loses a turn");
-        break;
     }
+
   }
 
   /*-----------------selecting---------------------*/
@@ -144,7 +147,9 @@ public class GameManager {
   private String cpuSelectZakmon() {
     Random r = new Random();
     int index = r.nextInt(3) +0;
+
     System.out.println("Your opponent selected "+ speciesList.get(index) + System.lineSeparator());
+
     return speciesList.get(index);
   }
 

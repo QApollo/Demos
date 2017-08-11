@@ -107,6 +107,7 @@ public class Zakmon {
       damage = 0 + r.nextInt(5) + 1;
     }
 
+    System.out.println(System.lineSeparator() + species + " attacked and dealt " + damage + " damage");
     return damage;
   }
 
@@ -114,6 +115,7 @@ public class Zakmon {
   public void defend() {
     this.defenseStat += 10;
     this.isDefending = true;
+    System.out.println(System.lineSeparator() + species +" defended");
   }
 
   //Reduces the defense stat and sets defending to false
