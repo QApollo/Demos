@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Random;
 import zakmon.Zakmon;
 import java.time.LocalTime;
 
@@ -131,7 +134,7 @@ public class GameManager {
 
   private String cpuSelectZakmon() {
     Random r = new Random();
-    int index = r.nextInt(3) +0;
+    int index = r.nextInt(3) + 0;
 
     System.out.println("Your opponent selected "+ speciesList.get(index) + System.lineSeparator());
 
