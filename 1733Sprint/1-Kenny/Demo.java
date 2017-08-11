@@ -43,10 +43,7 @@ public class Demo {
 		try {
 			int i = 0;
 			for (Vehicle v : vehicles) {
-				// v = null;
 				System.out.println(i + ") " + vehicles.get(i).getName());
-				// System.out.println("----------------------------------------------------------------");
-				// v.move();
 				i++;
 			}
 		} catch (NullPointerException e) {
