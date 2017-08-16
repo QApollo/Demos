@@ -58,7 +58,19 @@ public class QueryBuilder {
     return this;
   }
 
+  public QueryBuilder where(String column, int value) {
+    //Simply append where with the column and value you want to compare
+    query.append("WHERE " + column + " = " + value);
+    return this;
+  }
+
   public QueryBuilder where(String column, String operator ,String value) {
+    //overloaded where were you would pass it an other operator
+    query.append("WHERE " + column + " " + operator + " " + value + " ");
+    return this;
+  }
+
+  public QueryBuilder where(String column, String operator ,int value) {
     //overloaded where were you would pass it an other operator
     query.append("WHERE " + column + " " + operator + " " + value + " ");
     return this;
