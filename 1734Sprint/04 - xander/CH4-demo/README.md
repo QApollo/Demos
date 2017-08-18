@@ -11,7 +11,7 @@ Since it is not actually functional but rather a way of showing how such a thing
 Instead of writing raw SQL queries using a querybuilder is more inline with OOP paradigm.
 The builder methods take arguments and constructs the query for you.
 
-##Chapter 4 code snippets
+## Chapter 4 code snippets
 
 ```
 String userID = "23";
