@@ -1,6 +1,6 @@
 package character.typeinterfaces;
 
-public interface HolyInterface {
+public interface IsHoly {
   public void lightOfHealing();
   public void pray();
 }

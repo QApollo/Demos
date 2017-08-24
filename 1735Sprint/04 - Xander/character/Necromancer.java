@@ -1,9 +1,9 @@
 package character;
 
-import character.typeinterfaces.MagicInterface;
-import character.typeinterfaces.UnholyInterface;
+import character.typeinterfaces.IsMagic;
+import character.typeinterfaces.IsUnholy;
 
-public class Necromancer extends CharacterBase implements MagicInterface, UnholyInterface {
+public class Necromancer extends CharacterBase implements IsMagic, IsUnholy {
 
   public Necromancer(String name) {
     level = 0;

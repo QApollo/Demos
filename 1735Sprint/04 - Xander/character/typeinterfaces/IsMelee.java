@@ -1,6 +1,6 @@
 package character.typeinterfaces;
 
-public interface MeleeInterface {
+public interface IsMelee {
   public void meleeAttack();
   public void block();
 }

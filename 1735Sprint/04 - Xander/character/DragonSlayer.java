@@ -1,9 +1,9 @@
 package character;
 
-import character.typeinterfaces.MeleeInterface;
-import character.typeinterfaces.MagicInterface;
+import character.typeinterfaces.IsMelee;
+import character.typeinterfaces.IsMagic;
 
-public class DragonSlayer extends CharacterBase implements MeleeInterface, MagicInterface {
+public class DragonSlayer extends CharacterBase implements IsMelee, IsMagic {
 
   public DragonSlayer(String name) {
     level = 0;

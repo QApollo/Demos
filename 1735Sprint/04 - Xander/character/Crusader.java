@@ -1,9 +1,9 @@
 package character;
 
-import character.typeinterfaces.MeleeInterface;
-import character.typeinterfaces.HolyInterface;
+import character.typeinterfaces.IsMelee;
+import character.typeinterfaces.IsHoly;
 
-public class Crusader extends CharacterBase implements MeleeInterface, HolyInterface {
+public class Crusader extends CharacterBase implements IsMelee, IsHoly {
 
   public Crusader(String name) {
     level = 0;

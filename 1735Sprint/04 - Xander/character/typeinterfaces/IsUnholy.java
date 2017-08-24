@@ -1,6 +1,6 @@
 package character.typeinterfaces;
 
-public interface UnholyInterface {
+public interface IsUnholy {
   public void curse();
   public void summonSkeleton();
 }

@@ -1,6 +1,6 @@
 package character.typeinterfaces;
 
-public interface MagicInterface {
+public interface IsMagic {
   public void magicAttack();
   public void hover();
 }
