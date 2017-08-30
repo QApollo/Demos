@@ -1,7 +1,9 @@
 package com.xander.ch6;
 
-import java.util.*;
-import java.io.*;
+import java.util.Scanner;
+import java.util.InputMismatchException;
+import java.io.IOException;
+import java.io.File;
 
 public class App {
     final static String BREAK = "\n";
@@ -57,7 +59,7 @@ public class App {
       } finally {
           try {
             sc.nextLine();
-          } catch (NoSuchElementException e) {
+          } catch (NullPointerException e) {
             System.out.println(e + BREAK);
             System.out.println("Don't try and force things");
           }
