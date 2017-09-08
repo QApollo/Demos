@@ -4,17 +4,18 @@ CREATE TABLE exams (
 	exam_date DATE);
 	
 	
-INSERT INTO exams VALUES ('Robbert', 85, '2017-06-01');
-INSERT INTO exams VALUES ('John', 90, '2017-05-03');
-INSERT INTO exams VALUES ('Nik', 71, '2017-06-14');
-INSERT INTO exams VALUES ('Marcel', 88, '2017-01-11');
-INSERT INTO exams VALUES ('Oana', 32, '2017-08-18');
-INSERT INTO exams VALUES ('Oana', 24, '2017-09-01');
-INSERT INTO exams VALUES ('Kenny', 60, '2017-08-21');
-INSERT INTO exams VALUES ('Sheik', 52, '2017-09-08');
+INSERT INTO exams VALUES 
+	('Robbert', 85, '2017-06-01'),
+	('John', 90, '2017-05-03'),
+	('Nik', 71, '2017-06-14'),
+	('Marcel', 88, '2017-01-11'),
+	('Oana', 32, '2017-08-18'),
+	('Oana', 24, '2017-09-01'),
+	('Kenny', 60, '2017-08-21'),
+	('Sheik', 52, '2017-09-08');
 
 
-SELECT name, score, exam_date,
+SELECT DISTINCT name, score, exam_date,
 	CASE 
 		WHEN (score >= 65) THEN 'Sucess'
 		ELSE 'Fail'
