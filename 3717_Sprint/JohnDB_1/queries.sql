@@ -14,11 +14,18 @@ INSERT INTO exams VALUES ('Kenny', 60, '2017-08-21');
 INSERT INTO exams VALUES ('Sheik', 52, '2017-09-08');
 
 
-SELECT name, score, exam_date
-	CASE WHEN (score >= 65) THEN 'Sucess'
+SELECT name, score, exam_date,
+	CASE 
+		WHEN (score >= 65) THEN 'Sucess'
 		ELSE 'Fail'
-	END AS Sucess,
+	END
+		AS Sucess,
 	(score - LAG(score,1, score) OVER (ORDER BY exam_date)) 
-		AS impov_over_predec
+		AS "impovement over pred"
 FROM exams
 ORDER BY exam_date;
+
+
+SELECT INITCAP(name) AS "Certified"
+FROM exams
+WHERE NOT score < 65;
