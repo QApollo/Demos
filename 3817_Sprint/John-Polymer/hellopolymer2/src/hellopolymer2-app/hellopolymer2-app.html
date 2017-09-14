@@ -83,6 +83,10 @@
       <paper-button class="answer" id="optionB" on-click="_selectAnswer">
         [[countryB.name]]
       </paper-button>
+
+      <paper-button class="answer" id="optionC" on-click="_selectAnswer">
+        [[countryC.name]]
+      </paper-button>
     </div>
 
     <p>[[outputMessage]]</p>
@@ -112,6 +116,9 @@
           countryB: {
             type: Object
           },
+          countryC: {
+            type: Object
+          },
           outputMessage: {
             type: String,
             value: ""
@@ -139,13 +146,28 @@
 
       _handleResponse(event) {
         this.countryList = event.detail.response.countrycodes;
-        while (!this.countryA || !this.countryB
-              || (this.countryA.code == this.countryB.code)) {
+        while (!this.countryA || !this.countryB || !this.countryC
+              || (this.countryA.code == this.countryB.code)
+              || (this.countryA.code == this.countryC.code)
+              || (this.countryB.code == this.countryC.code)) {
           this.countryA = this.countryList[this.__getRandomCountry()];
           this.countryB = this.countryList[this.__getRandomCountry()];
+          this.countryC = this.countryList[this.__getRandomCountry()];
         }
-        let coin = (Math.floor(Math.random() * 2));
-        this.correctAnswer = coin == 1 ? this.countryA : this.countryB;
+        let rnum = (Math.floor(Math.random() * 3));
+        switch (rnum) {
+          case 0:
+              this.correctAnswer = this.countryA;
+            break;
+          case 1:
+              this.correctAnswer = this.countryB;
+            break;
+          case 2:
+              this.correctAnswer = this.countryC;
+            break;
+          default:
+              window.alert("Wrong implementation of case");
+        }
       }
 
       __getRandomCountry() {
