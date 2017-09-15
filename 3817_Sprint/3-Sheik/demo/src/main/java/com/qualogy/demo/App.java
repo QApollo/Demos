@@ -46,7 +46,7 @@ public class App {
     }
 
     public void pickPokemon() {
-        pokemon = pokemonList.get(RANDOM.nextInt(5));
+        pokemon = pokemonList.get(RANDOM.nextInt(pokemonList.size()));
         pokemon.speak();
     }
 
