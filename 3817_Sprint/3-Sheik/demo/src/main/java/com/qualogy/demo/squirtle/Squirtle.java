@@ -1,9 +1,15 @@
 package squirtle;
 
-import pokemon.Pokemon;
+import ispokemon.isPokemon;
 
-public class Squirtle extends Pokemon {
+public class Squirtle implements isPokemon {
+    public String name = "Squirtle";
+
     public void speak() {
         System.out.println("Squirt Squirt");
+    }
+
+    public String getName() {
+        return name;
     }
 }
