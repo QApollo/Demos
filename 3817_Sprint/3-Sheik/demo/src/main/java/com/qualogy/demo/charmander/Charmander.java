@@ -1,8 +1,8 @@
 package charmander;
 
-import ispokemon.isPokemon;
+import ispokemon.IsPokemon;
 
-public class Charmander implements isPokemon {
+public class Charmander implements IsPokemon {
     private String name = "Charmander";
 
     public void speak() {

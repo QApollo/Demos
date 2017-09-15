@@ -1,8 +1,8 @@
 package ditto;
 
-import ispokemon.isPokemon;
+import ispokemon.IsPokemon;
 
-public class Ditto implements isPokemon {
+public class Ditto implements IsPokemon {
     public String name = "Ditto";
 
     public void speak() {

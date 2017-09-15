@@ -3,8 +3,9 @@ package com.qualogy.demo;
 import bulbasaur.Bulbasaur;
 import charmander.Charmander;
 import ditto.Ditto;
+import isgrasstype.IsGrassType;
+import ispokemon.IsPokemon;
 import pikachu.Pikachu;
-import ispokemon.isPokemon;
 import squirtle.Squirtle;
 
 import java.util.ArrayList;
@@ -14,18 +15,21 @@ import java.util.Scanner;
 
 public class App {
 
-    String SPACE = " ";
-    Random RANDOM = new Random();
-    Scanner SCANNER = new Scanner(System.in);
+    private final Random RANDOM = new Random();
+    private final Scanner SCANNER = new Scanner(System.in);
 
-    List<isPokemon> pokemonList = new ArrayList<>();
-    isPokemon pokemon;
+    List<IsPokemon> pokemonList = new ArrayList<>();
+    IsPokemon pokemon;
 
     public static void main(String[] args) {
         App app = new App();
     }
 
     public App() {
+        gameManager();
+    }
+
+    public void gameManager() {
         startGame();
         addPokemon();
         pickPokemon();
@@ -51,9 +55,9 @@ public class App {
     }
 
     public void displayOptions() {
-        System.out.println("\n");
-        for (isPokemon p : pokemonList) {
-            System.out.println(pokemonList.indexOf(p) + SPACE + p.getName());
+        System.out.println();
+        for (IsPokemon p : pokemonList) {
+            System.out.println(pokemonList.indexOf(p) + " " + p.getName());
         }
     }
 
