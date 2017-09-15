@@ -1,33 +1,15 @@
 # \<hellopolymer2\>
 
-intro to Polymer 2 
+This is my introduction to Polymer 2.
 
-## Install the Polymer-CLI
+## Install the Polymer-CLI and bowel with npm:
+$ npm install -g polymer-cli
+$ npm install -g bower
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
+## Then downloas all dependencies with
 
-## Viewing Your Application
+$ bowel install
 
-```
-$ polymer serve
-```
+## To run the application in browser type:
 
-## Building Your Application
-
-```
-$ polymer build
-```
-
-This will create builds of your application in the `build/` directory, optimized to be served in production. You can then serve the built versions by giving `polymer serve` a folder to serve from:
-
-```
-$ polymer serve build/default
-```
-
-## Running Tests
-
-```
-$ polymer test
-```
-
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+$ polymer serve --open
