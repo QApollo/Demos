@@ -1,8 +1,8 @@
 package pikachu;
 
-import ispokemon.isPokemon;
+import ispokemon.IsPokemon;
 
-public class Pikachu implements isPokemon {
+public class Pikachu implements IsPokemon {
     public String name = "Pikachu";
 
     public void speak() {

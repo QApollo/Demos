@@ -1,8 +1,9 @@
 package bulbasaur;
 
-import ispokemon.isPokemon;
+import isgrasstype.IsGrassType;
+import ispokemon.IsPokemon;
 
-public class Bulbasaur implements isPokemon {
+public class Bulbasaur implements IsPokemon, IsGrassType {
     private String name = "Bulbasaur";
 
     public void speak() {

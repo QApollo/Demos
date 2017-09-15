@@ -1,8 +1,8 @@
 package squirtle;
 
-import ispokemon.isPokemon;
+import ispokemon.IsPokemon;
 
-public class Squirtle implements isPokemon {
+public class Squirtle implements IsPokemon {
     public String name = "Squirtle";
 
     public void speak() {
