@@ -1,0 +1,7 @@
+{
+  "name": "hellopolymer2",
+  "short_name": "hellopolymer2",
+  "description": "intro to Polymer 2 ",
+  "start_url": "/",
+  "display": "standalone"
+}

@@ -1,0 +1,184 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-styles/color.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="hellopolymer2-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+        font-family: Roboto, Noto, sans-serif;
+      }
+      paper-button {
+        color: white;
+      }
+      paper-button.another {
+        background: var(--paper-blue-500);
+        width: 100%;
+      }
+      paper-button.another:hover {
+        background: var(--paper-light-blue-500);
+      }
+      paper-button.answer {
+        background: var(--paper-purple-500);
+        flex-grow: 1;
+      }
+      paper-button.answer:hover {
+        background: var(--paper-pink-500);
+      }
+      app-toolbar {
+        background-color: var(--paper-grey-500);
+        color: white;
+        margin: 20px 0;
+      }
+      iron-image {
+        border: solid;
+        width: 100%;
+        --iron-image-width: 100%;
+         background-color: white;
+      }
+      #flag-image-container {
+        max-width: 600px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      #answer-button-container {
+        display: flex; /* or inline-flex */
+        flex-flow: row wrap;
+        justify-content:space-around;
+      }
+    </style>
+
+
+    <app-header>
+     <app-toolbar>
+       <div main-title>Whose flag is this?</div>
+     </app-toolbar>
+    </app-header>
+
+    <iron-ajax
+        auto
+        url="data/countrycodes.json"
+        handle-as="json"
+        on-response="_handleResponse">
+    </iron-ajax>
+
+
+    <div id="flag-image-container">
+      <iron-image
+            id="flag-image"
+            preload fade src="data/svg/[[correctAnswer.code]].svg">
+      </iron-image>
+    </div>
+
+
+    <div id="answer-button-container">
+      <paper-button class="answer" id="optionA" on-click="_selectAnswer">
+        [[countryA.name]]
+      </paper-button>
+
+      <paper-button class="answer" id="optionB" on-click="_selectAnswer">
+        [[countryB.name]]
+      </paper-button>
+
+      <paper-button class="answer" id="optionC" on-click="_selectAnswer">
+        [[countryC.name]]
+      </paper-button>
+    </div>
+
+    <p>[[outputMessage]]</p>
+
+    <paper-button id="another" class="another" on-click="_restart">
+      Another!
+    </paper-button>
+
+  </template>
+
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class Hellopolymer2App extends Polymer.Element {
+      static get is() { return 'hellopolymer2-app'; }
+
+      // any property that holds an item from countrycodes.json
+      // to be of type Object
+      static get properties() {
+        return {
+          countryA: {
+            type: Object
+          },
+          countryB: {
+            type: Object
+          },
+          countryC: {
+            type: Object
+          },
+          outputMessage: {
+            type: String,
+            value: ""
+          },
+          correctAnswer: {
+            type: Object
+          },
+          userAnswer: {   // textContent from button
+            type: String
+          },
+          countryList: {
+            type: Object
+          }
+        }
+      }
+
+      _selectAnswer(event) {
+        let clickedButton = event.target;
+        this.userAnswer = clickedButton.textContent; // textContent is a String
+        this.outputMessage =
+            this.userAnswer.trim() == this.correctAnswer.name.trim()
+                ? `${this.userAnswer} is correct!`
+                : `Nope! The correct answer is ${this.correctAnswer.name}!`;
+      }
+
+      _handleResponse(event) {
+        this.countryList = event.detail.response.countrycodes;
+        while (!this.countryA || !this.countryB || !this.countryC
+              || (this.countryA.code == this.countryB.code)
+              || (this.countryA.code == this.countryC.code)
+              || (this.countryB.code == this.countryC.code)) {
+          this.countryA = this.countryList[this.__getRandomCountry()];
+          this.countryB = this.countryList[this.__getRandomCountry()];
+          this.countryC = this.countryList[this.__getRandomCountry()];
+        }
+        let rnum = (Math.floor(Math.random() * 3));
+        switch (rnum) {
+          case 0:
+              this.correctAnswer = this.countryA;
+            break;
+          case 1:
+              this.correctAnswer = this.countryB;
+            break;
+          case 2:
+              this.correctAnswer = this.countryC;
+            break;
+          default:
+              window.alert("Wrong implementation of case");
+        }
+      }
+
+      __getRandomCountry() {
+        return Math.floor(Math.random() * (this.countryList.length));
+      }
+
+      _restart() {
+        window.location.reload();
+      }
+    }
+
+    window.customElements.define(Hellopolymer2App.is, Hellopolymer2App);
+  </script>
+</dom-module>
