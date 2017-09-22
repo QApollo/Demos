@@ -81,7 +81,6 @@ public class Chapter1Demo {
 	* Javadoc comment
 	*/
 	
-	
 	public static void main(String[] args) {
 		Chapter1Demo ch1 = new Chapter1Demo();
 		ch1.exampleMethod();
@@ -118,7 +117,7 @@ class Person {
 	
 	// Setter method
 	public void setName(String name) {
-		name = name;
+		this.name = name;
 	}
 	
 	// Constructor method (has no return type & name must be same as class name)
@@ -126,27 +125,5 @@ class Person {
 		System.out.println("This is a constructor");
 		// Constructor is used for initializing fields and methods
 		numLegs = 2;
-	}
-	
-	
+	}	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
