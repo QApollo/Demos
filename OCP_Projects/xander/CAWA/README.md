@@ -14,3 +14,7 @@ And search submissions based on tags that are supplied.
 * Applying OCP gathered knowledge in an application.
 * Getting experience with fileservers.
 * Getting experience with Database design.
+
+## How to run
+1) Install maven
+2) In the root folder run the application with the command: `mvn wildfly-swarm:run`
