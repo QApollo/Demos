@@ -1,7 +1,7 @@
-package com.qualogy.CAWA.resources;
+package com.qualogy.cawa.resources;
 
-import com.qualogy.CAWA.dao.ContentDTO;
-import com.qualogy.CAWA.dao.ContentDao;
+import com.qualogy.cawa.dao.ContentDTO;
+import com.qualogy.cawa.dao.ContentDao;
 
 import java.util.List;
 

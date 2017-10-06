@@ -1,7 +1,7 @@
-package com.qualogy.CAWA.assemblers;
+package com.qualogy.cawa.assemblers;
 
-import com.qualogy.CAWA.dao.ContentDTO;
-import com.qualogy.CAWA.rest.Content;
+import com.qualogy.cawa.dao.ContentDTO;
+import com.qualogy.cawa.rest.Content;
 
 import java.util.ArrayList;
 import java.util.List;

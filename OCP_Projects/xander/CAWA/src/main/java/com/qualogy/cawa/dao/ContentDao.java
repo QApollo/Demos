@@ -1,4 +1,4 @@
-package com.qualogy.CAWA.dao;
+package com.qualogy.cawa.dao;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -8,25 +8,24 @@ import java.util.Random;
 public class ContentDao {
 
   //TODO hookup an actual database and use non mock data
-  private static List<ContentDTO> content = new ArrayList<>();
+  private static List<ContentDTO> contentList = new ArrayList<>();
   static {
     for(int i = 1; i <= 5; i++) {
-      content.add(buildContentDTO(i,"0"+i));
+      contentList.add(buildContentDTO(i,"0"+i));
     }
   }
 
   public List<ContentDTO> getAllContent() {
-    return content;
+    return contentList;
   }
 
   public ContentDTO getContentByID(int id) {
-    ContentDTO result = new ContentDTO();
-    for(ContentDTO content : content) {
+    for(ContentDTO content : contentList) {
       if(content.getId() == id){
-        result = content;
+       return content;
       }
     }
-    return result;
+    return null;
   }
 
   private static ContentDTO buildContentDTO(int id, String fileName) {

@@ -1,8 +1,7 @@
-package com.qualogy.CAWA.rest;
+package com.qualogy.cawa.rest;
 
-import com.qualogy.CAWA.assemblers.ContentAssembler;
-import com.qualogy.CAWA.dao.ContentDao;
-import com.qualogy.CAWA.resources.ContentResource;
+import com.qualogy.cawa.assemblers.ContentAssembler;
+import com.qualogy.cawa.resources.ContentResource;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
@@ -10,7 +9,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 import java.util.List;
 
 @ApplicationScoped

@@ -1,4 +1,4 @@
-package com.qualogy.CAWA.dao;
+package com.qualogy.cawa.dao;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +11,6 @@ public class ContentDTO {
   private String fileName;
   private String thumbnailName;
 
-  ContentDTO() {}
 
  public ContentDTO(int id, String header, int votes, LocalDateTime date, String secretCode, String fileName) {
     this.id = id;
@@ -20,7 +19,9 @@ public class ContentDTO {
     this.date = date;
     this.secretCode = secretCode;
     this.fileName = fileName;
-    this.thumbnailName = fileName +"_thumbnail";
+    if(fileName != null) {
+      this.thumbnailName = fileName +"_thumbnail";
+    }
   }
 
   public int getId() {

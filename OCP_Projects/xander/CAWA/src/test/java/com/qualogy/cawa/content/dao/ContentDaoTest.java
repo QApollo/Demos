@@ -1,12 +1,8 @@
-package com.qualogy.CAWA.content.dao;
+package com.qualogy.cawa.content.dao;
 
-import com.qualogy.CAWA.dao.ContentDTO;
-import com.qualogy.CAWA.dao.ContentDao;
+import com.qualogy.cawa.dao.ContentDTO;
+import com.qualogy.cawa.dao.ContentDao;
 import junit.framework.TestCase;
-
-import javax.validation.constraints.AssertTrue;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ContentDaoTest extends TestCase {
   private ContentDao testObject = new ContentDao();

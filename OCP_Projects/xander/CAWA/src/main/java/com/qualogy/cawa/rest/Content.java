@@ -1,4 +1,4 @@
-package com.qualogy.CAWA.rest;
+package com.qualogy.cawa.rest;
 
 public class Content {
   private int id;

@@ -1,8 +1,8 @@
-package com.qualogy.CAWA.content.assemblers;
+package com.qualogy.cawa.content.assemblers;
 
-import com.qualogy.CAWA.assemblers.ContentAssembler;
-import com.qualogy.CAWA.dao.ContentDTO;
-import com.qualogy.CAWA.rest.Content;
+import com.qualogy.cawa.assemblers.ContentAssembler;
+import com.qualogy.cawa.dao.ContentDTO;
+import com.qualogy.cawa.rest.Content;
 import junit.framework.TestCase;
 
 import java.time.LocalDateTime;
