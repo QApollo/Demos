@@ -1,4 +1,4 @@
-public class ch4 {
+public class OCAch4 {
 	public static void main(String[] args) {
 		BankAccount myAccount = new BankAccount();
 		System.out.println("Initial balance is " + myAccount.getBalance());
