@@ -1,0 +1,69 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<!-- <link rel="stylesheet" href="../bower_components/sortable-table/css/bootstrap.css" shim-shadowdom> -->
+
+<dom-module id="my-view2">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    <div class="card">
+      <div class="circle"><i>--Work in progress</i></div>
+      <!-- <sortable-table columns='["fruit","alice","bill","casey"]' data='[
+      		[ "apple", 4, 10, 2 ],
+      		[ "banana", 0, 4, 0 ],
+      		[ "grape", 2, 3, 5 ],
+      		[ "pear", 4, 2, 8 ],
+      		[ "strawberry", 0, 14, 0 ] ]'>
+      </sortable-table> -->
+    <!-- <paper-datatable-column header="Title" property="title" sortable>
+    </paper-datatable-column> -->
+<!-- </paper-datatable> -->
+    </div>
+  </template>
+
+  <script>
+    class MyView2 extends Polymer.Element {
+      static get is() { return 'my-view2'; }
+      static get properties(){
+        return{
+          data: [
+            {"name": {
+              "title": "miss",
+              "first": "donna",
+              "last": "davis"
+            }},
+            {"name": {
+              "title": "mr",
+              "first": "samuel",
+              "last": "kelley"
+            }},
+            {"name": {
+              "title": "ms",
+              "first": "katie",
+              "last": "butler"
+            }}
+          ]
+
+        }
+      }
+    }
+
+    window.customElements.define(MyView2.is, MyView2);
+  </script>
+</dom-module>
