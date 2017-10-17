@@ -13,6 +13,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/nvd3-elements/nvd3-multi-bar-horizontal.html">
+<link rel="import" href="../bower_components/nvd3-elements/nvd3-stacked-area.html">
+
 
 
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
@@ -54,7 +56,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <div class="layout horizontal">
+    <div class="layout horizontal" style="margin-bottom:80px">
       <div id="d1" class="card" >
         <!-- <div class="circle">1</div> -->
         <h1>Age - Velocity</h1>
@@ -78,9 +80,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <br/><br/>
         <paper-button raised on-tap="handleClick" style="border-style: solid">Kick me</paper-button>
       </div>
-    </div>
 
-    <div class = "layout horizontal" style="max-width:100%">
       <div class="card" style="width:400px;">
         <!-- <div class="circle">1</div> -->
         <h1>KNSB #1</h1>
@@ -92,30 +92,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           auto-resize
           show-legend></nvd3-multi-bar-horizontal>
       </div>
+    </div>
 
-      <div class="card" style="width:400px; ">
-        <!-- <div class="circle">1</div> -->
-        <h1>KNSB #2</h1>
-        <p color="grey" style="font-size: 12px">Last updated: 1 Hour Ago</p>
-        <nvd3-multi-bar-horizontal
-          data="[[data1]]"
-          height="250"
-          width="400"
-          auto-resize
-          show-legend></nvd3-multi-bar-horizontal>
-      </div>
-
-      <div class="card" style="width:400px; ">
-        <!-- <div class="circle">1</div> -->
-        <h1>KNSB #3</h1>
-        <p color="grey" style="font-size: 12px">Last updated: 1 Hour Ago</p>
-        <nvd3-multi-bar-horizontal
-          data="[[data1]]"
-          height="250"
-          width="400"
-          auto-resize
-          show-legend></nvd3-multi-bar-horizontal>
-      </div>
+    <div style="max-width:100%">
+      <nvd3-stacked-area
+        data="[[data2]]"
+        height="250"
+        width="1200"
+        auto-resize
+        show-legend
+        use-interactive-guideline>
+      </nvd3-stacked-area>
     </div>
   </template>
 
@@ -223,59 +210,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             "label": "Group C",
             "value": 18.451534877007
           }]
-        }]}
+        }]},
 
-        // speak() {
-        //   console.log("he");
-        //   data = [
-        //   {
-        //     "key": "Sine Wave",
-        //     "color": "#ff7f0e",
-        //     "values": [{
-        //       "x": 0,
-        //       "y": 0
-        //     }, {
-        //       "x": 1,
-        //       "y": 0.59983341664682815
-        //     }, {
-        //       "x": 2,
-        //       "y": 0.39866933079506122
-        //     }, {
-        //       "x": 3,
-        //       "y": 0.19552020666133955
-        //     }, {
-        //       "x": 4,
-        //       "y": 0.8894183423086505
-        //     }, {
-        //       "x": 5,
-        //       "y": 0.479425538604203
-        //     }]
-        //   }, {
-        //     "key": "Cosine Wave",
-        //     "color": "#2ca02c",
-        //     "values": [{
-        //       "x": 0,
-        //       "y": 0.5
-        //     }, {
-        //       "x": 1,
-        //       "y": 0.89750208263901285
-        //     }, {
-        //       "x": 2,
-        //       "y": 0.8900332889206208
-        //     }, {
-        //       "x": 3,
-        //       "y": 0.877668244562803
-        //     }, {
-        //       "x": 4,
-        //       "y": 0.86053049700144255
-        //     }, {
-        //       "x": 5,
-        //       "y": 0.8387912809451864
-        //     }]
-        //   }
-        // ]
-        // }
+        data2: {type: Array, value:[
+        {
+          "key": "Professionals",
+          "values": [
+            [1, 23.041422681023],
+            [2, 19.854291255832],
+            [3, 21.02286281168],
+            [4, 22.093608385173]
+          ]
+        },
 
+        {
+          "key": "Amateurs",
+          "values": [
+            [1, 7.9356392949025],
+            [2, 7.4514668527298],
+            [3, 7.9085410566608],
+            [4, 5.8996782364764]
+          ]
+        },
+
+        {
+          "key": "Youth",
+          "values": [
+            [1, 7.9149900245423],
+            [2, 7.0899888751059],
+            [3, 7.5996132380614],
+            [4, 8.2741174301034]
+          ]
+        }
+      ]}
 
         }
       }
@@ -330,118 +297,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ] );
       }
 
-      // setTimeout(myFunction, 3000);
-      //
-      // function myFunction(){
-      //   data1 = [
-      //   {
-      //     "key": "Series1",
-      //     "color": "#d62728",
-      //     "values": [{
-      //       "label": "Group A",
-      //       "value": -1.8746444827653
-      //     }, {
-      //       "label": "Group B",
-      //       "value": -8.0961543492239
-      //     }, {
-      //       "label": "Group C",
-      //       "value": -0.57072943117674
-      //     }]
-      //   }, {
-      //     "key": "Series2",
-      //     "color": "#1f77b4",
-      //     "values": [{
-      //       "label": "Group A",
-      //       "value": 25.307646510375
-      //     }, {
-      //       "label": "Group B",
-      //       "value": 16.756779544553
-      //     }, {
-      //       "label": "Group C",
-      //       "value": 18.451534877007
-      //     }]
-      //   }]
-      // }
-      // constructor() {
-      //   super();
-      //     this.data = [
-      //     {
-      //       "key": "Sine Wave",
-      //       "color": "#ff7f0e",
-      //       "values": [{
-      //         "x": 0,
-      //         "y": 0
-      //       }, {
-      //         "x": 1,
-      //         "y": 0.09983341664682815
-      //       }, {
-      //         "x": 2,
-      //         "y": 0.19866933079506122
-      //       }, {
-      //         "x": 3,
-      //         "y": 0.29552020666133955
-      //       }, {
-      //         "x": 4,
-      //         "y": 0.3894183423086505
-      //       }, {
-      //         "x": 5,
-      //         "y": 0.479425538604203
-      //       }]
-      //     }, {
-      //       "key": "Cosine Wave",
-      //       "color": "#2ca02c",
-      //       "values": [{
-      //         "x": 0,
-      //         "y": 0.5
-      //       }, {
-      //         "x": 1,
-      //         "y": 0.49750208263901285
-      //       }, {
-      //         "x": 2,
-      //         "y": 0.4900332889206208
-      //       }, {
-      //         "x": 3,
-      //         "y": 0.477668244562803
-      //       }, {
-      //         "x": 4,
-      //         "y": 0.46053049700144255
-      //       }, {
-      //         "x": 5,
-      //         "y": 0.4387912809451864
-      //       }]
-      //     }
-      //   ];
-      //
-      //   this.data1 = [{
-      //     "key": "Series1",
-      //     "color": "#d62728",
-      //     "values": [{
-      //       "label": "Group A",
-      //       "value": -1.8746444827653
-      //     }, {
-      //       "label": "Group B",
-      //       "value": -8.0961543492239
-      //     }, {
-      //       "label": "Group C",
-      //       "value": -0.57072943117674
-      //     }]
-      //   }, {
-      //     "key": "Series2",
-      //     "color": "#1f77b4",
-      //     "values": [{
-      //       "label": "Group A",
-      //       "value": 25.307646510375
-      //     }, {
-      //       "label": "Group B",
-      //       "value": 16.756779544553
-      //     }, {
-      //       "label": "Group C",
-      //       "value": 18.451534877007
-      //     }]
-      //   }]
-      //
-
-      // }
     }
 
     window.customElements.define(MyView1.is, MyView1);
@@ -455,15 +310,5 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     // window.onload = setTimeout(checkIfReady, 2000);
     // document.querySelector("x-radial").speak();
   </script>
-</dom-module>
 
-<!-- <script>
-  function checkIfReady(){
-    // console.log(document.querySelector('my-view1'));
-    console.log(document.querySelector('#my-view1'));
-    if(document.querySelector('my-view1') != null){document.querySelector('my-view1').speak();}
-    else{setTimeout(checkIfReady,2000);}
-  }
-  window.onload = setTimeout(checkIfReady, 2000);
-  // document.querySelector("x-radial").speak();
-</script> -->
+</dom-module>
