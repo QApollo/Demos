@@ -1,0 +1,314 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/nvd3-elements/nvd3-line.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/nvd3-elements/nvd3-multi-bar-horizontal.html">
+<link rel="import" href="../bower_components/nvd3-elements/nvd3-stacked-area.html">
+
+
+
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-charts">
+  <template>
+    <style include="shared-styles iron-flex iron-flex-alignment iron-flex-factors" is="custom-style">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+      #main{
+        width:1050px;
+        height:425px;
+        /*padding:10px;*/
+      }
+      /*#main > div{
+        float:left;
+      }*/
+      /*#d1{
+        width:200px;
+        height:200px;
+        border:1px solid red;
+      }*/
+
+      /*#d1{
+        visibility:hidden;
+
+      }*/
+
+      #d2{
+        width:200px;
+        height:200px;
+      }
+    </style>
+
+    <div class="layout horizontal" style="margin-bottom:80px">
+      <div id="d1" class="card" >
+        <!-- <div class="circle">1</div> -->
+        <h1>Age - Velocity</h1>
+        <p color="grey" style="font-size: 12px">Last updated: 1 Hour Ago</p>
+        <nvd3-line
+          data = "[[data]]"
+          height="250"
+          width="600"
+          auto-resize
+          show-legend
+          use-interactive-guideline>
+        </nvd3-line>
+      </div>
+
+      <div style = "padding-top:120px" class="layout vertical">
+        <!-- <input id="checkBox" type="checkbox"> -->
+        <paper-checkbox style="padding-left:8px"></paper-checkbox> Male
+        <paper-checkbox style="padding-left:8px"></paper-checkbox> Female
+        <!-- <input id="checkBox" type="checkbox"> -->
+        <!-- <button on-click="handleClick">Kick Me</button> -->
+        <br/><br/>
+        <paper-button raised on-tap="handleClick" style="border-style: solid">Kick me</paper-button>
+      </div>
+
+      <div class="card" style="width:400px;">
+        <!-- <div class="circle">1</div> -->
+        <h1>KNSB #1</h1>
+        <p color="grey" style="font-size: 12px">Last updated: 1 Hour Ago</p>
+        <nvd3-multi-bar-horizontal
+          data="[[data1]]"
+          height="250"
+          width="400"
+          auto-resize
+          show-legend></nvd3-multi-bar-horizontal>
+      </div>
+    </div>
+
+    <div style="max-width:100%">
+      <nvd3-stacked-area
+        data="[[data2]]"
+        height="250"
+        width="1200"
+        auto-resize
+        show-legend
+        use-interactive-guideline>
+      </nvd3-stacked-area>
+    </div>
+  </template>
+
+  <script>
+    // window.onload = function() {this.querySelector("#d1").style.visibility = "visible"};
+
+    class MyView1 extends Polymer.Element {
+      static get is() {return 'my-charts'; }
+      static get properties(){
+        return{
+          data: {type: Array, value:[
+          {
+            "key": "Professionals",
+            "color": "#ff7f0e",
+            "values": [{
+              "x": 0,
+              "y": 0.3
+            }, {
+              "x": 1,
+              "y": 0.49983341664682815
+            }, {
+              "x": 2,
+              "y": 0.55866933079506122
+            }, {
+              "x": 3,
+              "y": 0.58552020666133955
+            }, {
+              "x": 4,
+              "y": 0.6394183423086505
+            }, {
+              "x": 5,
+              "y": 0.79425538604203
+            }]
+          }, {
+            "key": "Amateurs",
+            "color": "#2ca02c",
+            "values": [{
+              "x": 0,
+              "y": 0.2
+            }, {
+              "x": 1,
+              "y": 0.29750208263901285
+            }, {
+              "x": 2,
+              "y": 0.3300332889206208
+            }, {
+              "x": 3,
+              "y": 0.417668244562803
+            }, {
+              "x": 4,
+              "y": 0.46053049700144255
+            }, {
+              "x": 5,
+              "y": 0.5387912809451864
+            }]
+          }, {
+            "key": "Youth",
+            "color": "#1E90FF",
+            "values": [{
+              "x": 0,
+              "y": 0.1
+            }, {
+              "x": 1,
+              "y": 0.29750208263901285
+            }, {
+              "x": 2,
+              "y": 0.1900332889206208
+            }, {
+              "x": 3,
+              "y": 0.477668244562803
+            }, {
+              "x": 4,
+              "y": 0.56053049700144255
+            }, {
+              "x": 5,
+              "y": 0.587912809451864
+            }]
+          }
+        ]},
+
+        data1: {type: Array, value:[
+        {
+          "key": "Series1",
+          "color": "#d62728",
+          "values": [{
+            "label": "Group A",
+            "value": -1.8746444827653
+          }, {
+            "label": "Group B",
+            "value": -8.0961543492239
+          }, {
+            "label": "Group C",
+            "value": -0.57072943117674
+          }]
+        }, {
+          "key": "Series2",
+          "color": "#1f77b4",
+          "values": [{
+            "label": "Group A",
+            "value": 25.307646510375
+          }, {
+            "label": "Group B",
+            "value": 16.756779544553
+          }, {
+            "label": "Group C",
+            "value": 18.451534877007
+          }]
+        }]},
+
+        data2: {type: Array, value:[
+        {
+          "key": "Professionals",
+          "values": [
+            [1, 23.041422681023],
+            [2, 19.854291255832],
+            [3, 21.02286281168],
+            [4, 22.093608385173]
+          ]
+        },
+
+        {
+          "key": "Amateurs",
+          "values": [
+            [1, 7.9356392949025],
+            [2, 7.4514668527298],
+            [3, 7.9085410566608],
+            [4, 5.8996782364764]
+          ]
+        },
+
+        {
+          "key": "Youth",
+          "values": [
+            [1, 7.9149900245423],
+            [2, 7.0899888751059],
+            [3, 7.5996132380614],
+            [4, 8.2741174301034]
+          ]
+        }
+      ]}
+
+        }
+      }
+
+      handleClick(){
+        console.log(this.data = [
+        {
+          "key": "Professionals",
+          "color": "#ff7f0e",
+          "values": [{
+            "x": 0,
+            "y": 0
+          }, {
+            "x": 1,
+            "y": 0.79983341664682815
+          }, {
+            "x": 2,
+            "y": 0.39866933079506122
+          }, {
+            "x": 3,
+            "y": 0.19552020666133955
+          }, {
+            "x": 4,
+            "y": 0.8894183423086505
+          }, {
+            "x": 5,
+            "y": 0.479425538604203
+          }]
+        }, {
+          "key": "Amateurs",
+          "color": "#2ca02c",
+          "values": [{
+            "x": 0,
+            "y": 0.5
+          }, {
+            "x": 1,
+            "y": 0.89750208263901285
+          }, {
+            "x": 2,
+            "y": 0.1900332889206208
+          }, {
+            "x": 3,
+            "y": 0.177668244562803
+          }, {
+            "x": 4,
+            "y": 0.86053049700144255
+          }, {
+            "x": 5,
+            "y": 0.1387912809451864
+          }]
+        }
+      ] );
+      }
+
+    }
+
+    window.customElements.define(MyView1.is, MyView1);
+    // function checkIfReady(){
+    //   // console.log(document.querySelector('my-view1'));
+    //   // console.log(document.getElementById('my-view1'));
+    //   // console.log(this.$.graphgraph)
+    //   if(this.$.graphgraph != undefined){console.log(this.$.graphgraph);}
+    //   else{setTimeout(checkIfReady,2000);}
+    // }
+    // window.onload = setTimeout(checkIfReady, 2000);
+    // document.querySelector("x-radial").speak();
+  </script>
+
+</dom-module>
