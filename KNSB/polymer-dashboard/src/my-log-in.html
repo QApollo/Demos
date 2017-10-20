@@ -15,7 +15,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/iron-localstorage/iron-localstorage.html">
 <link rel="import" href="../bower_components/iron-input/iron-input.html">
-<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<!-- <link rel="import" href="../bower_components/paper-input/paper-input.html"> -->
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 
 <link rel="import" href="../bower_components/app-route/app-location.html">
@@ -99,7 +99,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <paper-input-container>
             <label>Password</label>
             <iron-input slot="input" id="password" type="text" bind-value="{{formData.password}}" style="border:none">
-               <input>
+               <input type = "password">
              </iron-input>
         </paper-input-container>
 
@@ -111,7 +111,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <div id="authenticated" hidden$="[[!storedUser.loggedin]]">
           <h2>Hello, [[storedUser.name]]!</h2>
-          <p>You are currently logged in. You can access <a href="/my-charts">Secret Quotes</a>!</p>
+          <p>You are currently logged in. You can access <a href="/my-charts">Page</a>!</p>
       </div>
 
     </div>

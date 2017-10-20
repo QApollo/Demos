@@ -34,21 +34,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       #main{
         width:1050px;
         height:425px;
-        /*padding:10px;*/
       }
-      /*#main > div{
-        float:left;
-      }*/
-      /*#d1{
-        width:200px;
-        height:200px;
-        border:1px solid red;
-      }*/
-
-      /*#d1{
-        visibility:hidden;
-
-      }*/
 
       #d2{
         width:200px;
@@ -72,17 +58,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </div>
 
       <div style = "padding-top:120px" class="layout vertical">
-        <!-- <input id="checkBox" type="checkbox"> -->
         <paper-checkbox style="padding-left:8px"></paper-checkbox> Male
         <paper-checkbox style="padding-left:8px"></paper-checkbox> Female
-        <!-- <input id="checkBox" type="checkbox"> -->
-        <!-- <button on-click="handleClick">Kick Me</button> -->
         <br/><br/>
         <paper-button raised on-tap="handleClick" style="border-style: solid">Kick me</paper-button>
       </div>
 
       <div class="card" style="width:400px;">
-        <!-- <div class="circle">1</div> -->
         <h1>KNSB #1</h1>
         <p color="grey" style="font-size: 12px">Last updated: 1 Hour Ago</p>
         <nvd3-multi-bar-horizontal
@@ -107,8 +89,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    // window.onload = function() {this.querySelector("#d1").style.visibility = "visible"};
-
     class MyView1 extends Polymer.Element {
       static get is() {return 'my-charts'; }
       static get properties(){

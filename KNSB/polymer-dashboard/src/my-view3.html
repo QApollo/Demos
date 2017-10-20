@@ -11,9 +11,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="../bower_components/iron-icons/device-icons.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 
-
-
+<!-- <link rel="import" href="../bower_components/iron-input/iron-input.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html"> -->
 
 <dom-module id="my-view3">
   <template>
@@ -24,11 +26,78 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 10px;
       }
     </style>
+    <iron-ajax
+        id="getQuote"
+        auto
+        url="http://localhost:8080/content/customer"
+        method="{{operation}}"
+        handle-as={{handling}}
+        content-type="application/json"
+        body='{"action": "{{action}}", "surname":"{{username1}}", "message":"{{username2}}"}'
+        last-response="{{quote}}"
+        on-response = "_onResponse">
+      </iron-ajax>
+      <pre>[[json(lastResponse)]]</pre>
+
 
     <div class="card">
-      <div class="circle"><i>--Work in progress</i></div>
+      <paper-input-container>
+          <label>Input</label>
+          <iron-input slot="input" id="username" type="text" bind-value="{{username}}" style="border:none">
+          <!-- <input is="iron-input" id="username" type="text" bind-value="{{username::input}}" style="border:none"> -->
+             <input value="{{username::input}}" />
+          </iron-input>
+      </paper-input-container>
+
+      <paper-button raised on-tap="getQuote" style="border-style: solid">Create</paper-button>
     </div>
-    <!-- <iron-icon icon="device:graphic-eq"></iron-icon> -->
+
+    <div class="card">
+      <paper-input-container>
+          <label>Input</label>
+          <iron-input slot="input" id="read" type="text" bind-value="{{read}}" style="border:none">
+             <input value="{{read::input}}" />
+          </iron-input>
+      </paper-input-container>
+
+      <paper-button raised on-tap="getRead" style="border-style: solid">Read</paper-button>
+
+      <paper-input-container>
+          <label>Output</label>
+          <iron-input slot="input" id="output" type="text" bind-value="{{output}}" style="border:none">
+             <input value="{{output::input}}" />
+          </iron-input>
+      </paper-input-container>
+    </div>
+
+    <div class="card">
+      <paper-input-container>
+          <label>Input</label>
+          <iron-input slot="input" id="update" type="text" bind-value="{{update}}" style="border:none">
+             <input value="{{update::input}}" />
+          </iron-input>
+      </paper-input-container>
+
+      <paper-button raised on-tap="getUpdate" style="border-style: solid">Update</paper-button>
+
+      <paper-input-container>
+          <label>Input</label>
+          <iron-input slot="input" id="update1" type="text" bind-value="{{update1}}" style="border:none">
+             <input value="{{update1::input}}" />
+          </iron-input>
+      </paper-input-container>
+    </div>
+
+    <div class="card">
+      <paper-input-container>
+          <label>Input</label>
+          <iron-input slot="input" id="delete" type="text" bind-value="{{delete}}" style="border:none">
+             <input value="{{delete::input}}" />
+          </iron-input>
+      </paper-input-container>
+
+      <paper-button raised on-tap="getDelete" style="border-style: solid">Delete</paper-button>
+    </div>
 
 
   </template>
@@ -36,11 +105,49 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     class MyView3 extends Polymer.Element {
       static get is() { return 'my-view3'; }
+
+      json(obj) {
+        console.log(obj);
+        return JSON.stringify(obj, null, 2);
+      }
+
+      getQuote(value) {
+        this.handling = "text/plain";
+        this.action = "create";
+        this.operation = "post"
+        this.username1 = this.username;
+      }
+
+      getUpdate(value) {
+        this.handling = "text/plain"
+        this.action = "update";
+        this.operation = "put"
+        this.username2 = this.update1;
+        this.username1 = this.update;
+      }
+
+      getRead(value) {
+        this.operation = "get";
+        this.handling = "json";
+        this.$.getQuote.generateRequest();
+      }
+
+      getDelete(value) {
+        this.handling = "text/plain";
+        this.operation = "delete";
+        this.action = "delete";
+        this.username1 = this.delete;
+      }
+
+      _onResponse(e) {
+        console.log(e.detail.response);
+        this.output = e.detail.response[String(this.read)];
+      }
+
     }
 
     window.customElements.define(MyView3.is, MyView3);
-    // var div = MyView3.$.container;
-    // console.log(div);
+
 
   </script>
 </dom-module>
