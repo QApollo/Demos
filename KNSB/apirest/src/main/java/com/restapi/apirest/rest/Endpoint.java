@@ -13,19 +13,13 @@ import java.io.IOException;
 @ApplicationScoped
 @Path("/content")
 public class Endpoint {
-
-//    @POST
-//    @Produces("text/plain")
-//    public Response doGet() {
-//        return Response.ok("Hello from WildFly Swarm!").status(200)
-//                .build();
-//    }
+    
 
     @GET
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getLine(Customer crud,
+    public Response getCustomer(Customer customer,
                                  @QueryParam("deviceName") String deviceName) throws IOException, JSONException {
 
         JSONObject json = FileManager.read(0);
@@ -37,11 +31,11 @@ public class Endpoint {
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response deleteLine(Customer crud,
+    public Response deleteCustomer(Customer customer,
                                  @QueryParam("deviceName") String deviceName) throws IOException {
-        printConsole(crud, deviceName);
+        printConsole(customer, deviceName);
         String message = "";
-        FileManager.delete(Integer.parseInt(crud.getSurname()));
+        FileManager.delete(Integer.parseInt(customer.getSurname()));
 
         return Response.ok(message).status(200)
                 .build();
@@ -51,12 +45,12 @@ public class Endpoint {
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response createLine(Customer crud,
+    public Response createCustomer(Customer customer,
                                                  @QueryParam("deviceName") String deviceName) throws IOException {
-        printConsole(crud, deviceName);
-        System.out.println("this is: " + crud.getAction());
+        printConsole(customer, deviceName);
+        System.out.println("this is: " + customer.getAction());
         String message = "";
-        FileManager.create(crud.getSurname());
+        FileManager.create(customer.getSurname());
 
         return Response.ok(message).status(200)
                 .build();
@@ -66,12 +60,12 @@ public class Endpoint {
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response updateLine(Customer crud,
+    public Response updateCustomer(Customer customer,
                                  @QueryParam("deviceName") String deviceName) throws IOException {
-        printConsole(crud, deviceName);
+        printConsole(customer, deviceName);
         System.out.println("I am now in UPDATE");
         String message = "";
-        FileManager.update(Integer.parseInt(crud.getSurname()),crud.getMessage());
+        FileManager.update(Integer.parseInt(customer.getSurname()),customer.getMessage());
 //        Response.status(Response.Status.NOT_FOUND);
         return Response.ok(message).status(200)
                 .build();
