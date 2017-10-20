@@ -1,0 +1,58 @@
+
+
+OCA CHAPTER 1
+Basics:
+1. Java classes consist of fields and methods. An object is an instance of a class. 
+
+2. Three ways for comment: 
+	Single line: //
+	Multiline: /* */
+	Javadoc: /** */
+
+3. Java begins with the main() method. 
+	public static void main(String[] args)
+
+4. The java.lang is imported by default
+	wildcard: java.util.*
+   Can't import the sub method within one class
+
+5. A constructor is a method matching the class name and omitting the return type.
+	When an object is initialized, fields and blocks are initialized first and then the constructor.
+
+6. Numeric literals are allowed to begin with 0(octal), 0x(hex), 0X(hex), 0b(binary), 0B(binary). 
+	Also allowed to contain underscore _ as long as it's not at the beginning/end nor next to the point "."
+
+7. Local variables need to be specifically initialized. The instance and class (static) variables, they have a initial value once declared.
+	Identifier may contain letter, numbers, $ or _. Indentifier cannot begin with numbers nor can we use the reserved names (int, char etc.).
+
+8. Instance variables are nonstatic field in the class. 
+	Class variables are static. 
+	Local variables are declared within a method and can only be used within the method.
+
+9. Order of elements:
+	1. package statement: package abc;
+	2. import statements: import java.util.*;
+	3. class declaration: public class name{}
+	4. fields and methods are within the class
+
+10. An object becomes eligible for garbage collection when there are no more references to it or its references have gone out of the scope.
+	finalize() method will run ONCE for each object if/when it is first garbage collected.
+
+11. Java befinits:
+	1) Java is object oriented: All code is defined in classes.
+	2) Access modifiers allow classes to encapsulate data.
+	3) Java is platform independent, compiling to bytecode.
+	4) Robust and simple by not providing pointers or operator overloading.
+	5) Java is secure because it runs inside virtual mahcine.
+	 
+
+
+Summary (3 sentences):
+Chapter 1 gives a general basics of Java language. Introduced fields and their scopes and types, methods and their types. Rules of identifying names, ordering elements and syntax.
+
+
+
+The parts that the code covers:
+(Explain what your demo does)
+
+The code is trying to make fun of how Siri responces. Our "Siri" gets request from the keyboard and gives random responces. 
