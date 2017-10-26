@@ -1,4 +1,5 @@
-public class Human implements IsABoyfriend, IsAnEmployee {
+// public class Human implements IsABoyfriend, IsAnEmployee {
+public class Human {
 
     private String name;
     private String gender;
@@ -22,24 +23,13 @@ public class Human implements IsABoyfriend, IsAnEmployee {
         return age;
     }
 
-    // public void executeEvent(Event event) {
-    //     switch(event) {
-    //         case DATE:
-    //             goOnDate();
-    //             break;
-    //         case WORK:
-    //             goOnWork();
-    //             break;
-    //     }
+    // public void goOnDate() {
+    //     System.out.println("Going on a romantic date.");
     // }
 
-    public void goOnDate() {
-        System.out.println("Going on a romantic date.");
-    }
-
-    public void goToWork() {
-        System.out.println("Working hard.");
-    }
+    // public void goToWork() {
+    //     System.out.println("Working hard.");
+    // }
 
 }
 

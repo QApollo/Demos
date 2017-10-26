@@ -5,17 +5,26 @@ public class Demo {
     }
 
     public Demo() {
-        Human human = createHuman();
-
-        introduction(human);
-        askForDate(human);
-        askToWork(human);
+        exeRomanticus();
+        exeWorker();
     }
 
-    public Human createHuman() {
-        Human human = new Human("Henk", "Male", 20);
+    public void exeRomanticus() {
+        Romanticus romanticus = new Romanticus("Roman", "Male", 20);
 
-        return human;
+        introduction(romanticus);
+        goOnDate(romanticus);
+
+        // goToWork(romanticus);
+    }
+
+    public void exeWorker() {
+        Worker worker = new Worker("Wilma", "Female", 30);
+
+        introduction(worker);
+        goToWork(worker);
+
+        // goOnDate(worker);
     }
 
     public void introduction(Human human) {
@@ -28,14 +37,14 @@ public class Demo {
                             " years old.");
     }
 
-    public void askForDate(Human human) {
-        IsABoyfriend boyfriend = human;
-        boyfriend.goOnDate();
+    public void goOnDate(Human human) {
+        IsInARelationship romanticus = (IsInARelationship)human;
+        romanticus.goOnDate();
     }
 
-    public void askToWork(Human human) {
-        IsAnEmployee employee = human;
-        employee.goToWork();
+    public void goToWork(Human human) {
+        IsAnEmployee worker = (IsAnEmployee)human;
+        worker.goToWork();
     }
 
 }
