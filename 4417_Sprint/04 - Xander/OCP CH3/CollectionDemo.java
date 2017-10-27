@@ -44,16 +44,16 @@ public class CollectionDemo {
         System.out.println(peopleArrayListExample);
     }
 
-    private void setExamples(){
+    private void setExamples() {
 
         System.out.println("Initial set values");
-        for(Integer value : setExample){
+        for(Integer value : setExample) {
             System.out.print(value + " ");
         }
 
         System.out.println("\n" + "Result of attempting to add a duplicate value to the set: " + setExample.add(5));
         System.out.println("Values after add");
-        for(Integer value : setExample){
+        for(Integer value : setExample) {
             System.out.print(value + " ");
         }
     }
@@ -72,7 +72,7 @@ public class CollectionDemo {
 
         System.out.println("\n" + "Values after add/offer");
         itr = queueExample.iterator();
-        while(itr.hasNext()){
+        while(itr.hasNext()) {
             System.out.print(itr.next() + " ");
         }
 

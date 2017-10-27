@@ -28,7 +28,7 @@ public class MapDemo {
         map.forEach((k,v) -> System.out.println("Key:" + k + " "+ "Value:" + v));
     }
 
-    private <K, V, U> void printValueFromMap(HashMap<K,V> map, U key){
+    private <K, V, U> void printValueFromMap(HashMap<K,V> map, U key) {
         System.out.println("value = " + map.get(key));
     }
 
