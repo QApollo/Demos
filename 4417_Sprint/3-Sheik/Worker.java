@@ -1,4 +1,4 @@
-public class Worker extends Human implements IsAnEmployee {
+public class Worker extends Human implements HasAJob {
     public Worker(String name, String gender, int age) {
         super(name, gender, age);
     }

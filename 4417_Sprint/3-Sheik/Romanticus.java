@@ -1,4 +1,4 @@
-public class Romanticus extends Human implements IsInARelationship {
+public class Romanticus extends Human implements HasARelationship {
     public Romanticus(String name, String gender, int age) {
         super(name, gender, age);
     }

@@ -38,12 +38,12 @@ public class Demo {
     }
 
     public void goOnDate(Human human) {
-        IsInARelationship romanticus = (IsInARelationship)human;
+        HasARelationship romanticus = (HasARelationship)human;
         romanticus.goOnDate();
     }
 
     public void goToWork(Human human) {
-        IsAnEmployee worker = (IsAnEmployee)human;
+        HasAJob worker = (HasAJob)human;
         worker.goToWork();
     }
 

@@ -1,4 +1,4 @@
-// public class Human implements IsABoyfriend, IsAnEmployee {
+// public class Human implements IsABoyfriend, HasAJob {
 public class Human {
 
     private String name;
