@@ -36,7 +36,7 @@ public class FileManagerCreateTest {
 
     @Then("^a name equals to Yung should be added to the file$")
     public void validateName(){
-        json = response.then().statusCode(200);
+        json = response.then().statusCode(201);
     }
 
     @Given("I have typed in %%% in the name box$")

@@ -25,7 +25,7 @@ public class FileManagerDeleteTest {
     @Given("^I have typed in 2 in the line box$")
     public void putInLine(){
         jsonAsMap = new HashMap<>();
-        jsonAsMap.put("line", "2");
+        jsonAsMap.put("locationInFile", "2");
         request = given().contentType(ContentType.JSON).body(jsonAsMap);
     }
 
@@ -45,7 +45,7 @@ public class FileManagerDeleteTest {
     @Given("^I have typed in @a in the line box$")
     public void putInInvalidLine(){
         jsonAsMap = new HashMap<>();
-        jsonAsMap.put("line", "@");
+        jsonAsMap.put("locationInFile", "@");
         request = given().contentType(ContentType.JSON).body(jsonAsMap);
     }
 

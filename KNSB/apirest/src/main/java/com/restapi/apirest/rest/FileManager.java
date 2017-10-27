@@ -73,7 +73,6 @@ public class FileManager {
             while ((currentLine = reader.readLine()) != null) {
                 counter++;
                 if (counter == line) {
-                    System.out.println("I AM IN COUNTER IS LINE");
                     writer.write(message + System.getProperty("line.separator"));
                     continue;
                 }

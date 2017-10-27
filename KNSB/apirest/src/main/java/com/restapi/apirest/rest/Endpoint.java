@@ -31,9 +31,7 @@ public class Endpoint {
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response deleteCustomer(Customer customer,
-                                 @QueryParam("deviceName") String deviceName) throws IOException {
-        System.out.println("I am in delete");
+    public Response deleteCustomer(Customer customer) throws IOException {
         try {
             manager.delete(Integer.parseInt(customer.getLocationInFile()));
         } catch (java.lang.NumberFormatException e){
@@ -48,16 +46,14 @@ public class Endpoint {
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response createCustomer(Customer customer,
-                                                 @QueryParam("deviceName") String deviceName) throws IOException {
+    public Response createCustomer(Customer customer) throws IOException {
         if(!customer.getSurname().matches(".*[a-z].*")) {
-            System.out.println("wrong");
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
         manager.create(customer.getSurname());
 
-        return Response.ok().status(200)
+        return Response.ok().status(201)
                 .build();
     }
 
@@ -65,14 +61,11 @@ public class Endpoint {
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response updateCustomer(Customer customer,
-                                 @QueryParam("deviceName") String deviceName) throws IOException {
-        System.out.println("I am now in UPDATE");
+    public Response updateCustomer(Customer customer) throws IOException {
         Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
         Matcher matcher = pattern.matcher(customer.getSurname());
 
         if(!matcher.matches()) {
-            System.out.println("wrong");
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
@@ -84,11 +77,6 @@ public class Endpoint {
 
         return Response.ok().status(200)
                 .build();
-    }
-
-    private void printConsole(Customer customer, @QueryParam("deviceName") String deviceName) {
-        System.out.println(deviceName);
-        System.out.println("surname is: "+customer.getSurname());
     }
 
 }

@@ -25,7 +25,7 @@ public class FileManagerPutTest {
     @Given("^I have typed in 3 in the line box$")
     public void putLineNumber() {
         jsonAsMap = new HashMap<>();
-        jsonAsMap.put("line", "3");
+        jsonAsMap.put("locationInFile", "3");
     }
 
     @And("^I have typed in Aeron in the name box$")
@@ -52,7 +52,7 @@ public class FileManagerPutTest {
     @Given("^I have typed in a in the line box$")
     public void putIncorrectLineNumber() {
         jsonAsMap = new HashMap<>();
-        jsonAsMap.put("line", "a");
+        jsonAsMap.put("locationInFile", "a");
     }
 
     @And("^I have typed in Alfonso in the name box$")
@@ -102,7 +102,6 @@ public class FileManagerPutTest {
     public void validatePuttingInvalidName(){
         json = response.then().statusCode(400);
     }
-
 
 
 }
