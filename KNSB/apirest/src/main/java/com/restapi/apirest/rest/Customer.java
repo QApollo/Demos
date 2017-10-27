@@ -12,9 +12,7 @@ public class Customer {
         return surname;
     }
 
-    public String lastName() {
-        return lastname;
-    }
+    public String lastName() { return lastname; }
 
     public String getLiveIn() {
         return liveIn;

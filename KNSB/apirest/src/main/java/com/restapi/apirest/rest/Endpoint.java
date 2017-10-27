@@ -21,20 +21,25 @@ public class Endpoint {
     @GET
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getCustomer() throws IOException, JSONException {
-        JSONObject json = manager.read();
-        return Response.ok(json.toString()).status(200)
-                .build();
+    public Response getCustomer() {
+        try {
+            JSONObject json = manager.read();
+            return Response.ok(json.toString()).status(200)
+                    .build();
+        } catch (IOException e){
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+
     }
 
     @DELETE
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response deleteCustomer(Customer customer) throws IOException {
+    public Response deleteCustomer(Customer customer) {
         try {
             manager.delete(Integer.parseInt(customer.getLocationInFile()));
-        } catch (java.lang.NumberFormatException e){
+        } catch (IOException | java.lang.NumberFormatException e){
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
@@ -46,7 +51,7 @@ public class Endpoint {
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response createCustomer(Customer customer) throws IOException {
+    public Response createCustomer(Customer customer) {
         if(!customer.getSurname().matches(".*[a-z].*")) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
@@ -61,7 +66,7 @@ public class Endpoint {
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response updateCustomer(Customer customer) throws IOException {
+    public Response updateCustomer(Customer customer)  {
         Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
         Matcher matcher = pattern.matcher(customer.getSurname());
 
@@ -71,7 +76,7 @@ public class Endpoint {
 
         try {
             manager.update(Integer.parseInt(customer.getLocationInFile()),customer.getSurname());
-        } catch (NumberFormatException e){
+        } catch (IOException | NumberFormatException e){
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
