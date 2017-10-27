@@ -1,4 +1,3 @@
-// public class Human implements IsABoyfriend, HasAJob {
 public class Human {
 
     private String name;
@@ -22,14 +21,6 @@ public class Human {
     public int getAge() {
         return age;
     }
-
-    // public void goOnDate() {
-    //     System.out.println("Going on a romantic date.");
-    // }
-
-    // public void goToWork() {
-    //     System.out.println("Working hard.");
-    // }
 
 }
 
