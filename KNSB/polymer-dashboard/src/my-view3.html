@@ -29,11 +29,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <iron-ajax
         id="getQuote"
         auto
-        url="http://localhost:8080/content/customer"
+        url="http://localhost:8080/content/customer/"
         method="{{operation}}"
         handle-as={{handling}}
         content-type="application/json"
-        body='{"action": "{{action}}", "surname":"{{username1}}", "message":"{{username2}}"}'
+        body='{"surname":"{{username1}}", "locationInFile":"{{username2}}"}'
         last-response="{{quote}}"
         on-response = "_onResponse">
       </iron-ajax>
@@ -113,17 +113,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       getQuote(value) {
         this.handling = "text/plain";
-        this.action = "create";
+        // this.action = "create";
         this.operation = "post"
         this.username1 = this.username;
       }
 
       getUpdate(value) {
         this.handling = "text/plain"
-        this.action = "update";
+        // this.action = "update";
         this.operation = "put"
-        this.username2 = this.update1;
-        this.username1 = this.update;
+        this.username2 = this.update;
+        this.username1 = this.update1;
       }
 
       getRead(value) {
@@ -135,8 +135,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       getDelete(value) {
         this.handling = "text/plain";
         this.operation = "delete";
-        this.action = "delete";
-        this.username1 = this.delete;
+        // this.action = "delete";
+        this.username2 = this.delete;
       }
 
       _onResponse(e) {

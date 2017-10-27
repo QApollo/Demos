@@ -3,27 +3,49 @@ package com.restapi.apirest.rest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 
-import static java.lang.System.out;
-
 public class FileManager {
-    //    File file = new File("resources/file.txt");
-    static public void create(String updateText){
+        File file;
 
-        try(BufferedWriter output = new BufferedWriter(new FileWriter("resources/files.txt", true))){
-            out.println("I'm here");
+        FileManager(String path){
+            this.file = new File(path);
+        }
+
+        FileManager(File path){
+            this.file = new File(path.toString());
+        }
+
+        FileManager( ){
+            file = new File("resources/files.txt");
+        }
+
+        File getFile(){
+            return this.file;
+        }
+
+
+    void setPath(String path){
+        this.file = new File(path);
+    }
+
+    void create(String updateText){
+        try(BufferedWriter output = new BufferedWriter(new FileWriter(file, true))) {
             output.append(updateText + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    static public void delete(int line) throws IOException {
-        File inputFile = new File("resources/files.txt");
+    boolean delete(int line) throws IOException {
         File tempFile = new File("resources/myTempFiles.txt");
-        try(BufferedReader reader = new BufferedReader(new FileReader(inputFile)); BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))){
+        try(BufferedReader reader = new BufferedReader(new FileReader(file)); BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
             int counter = 0;
             String currentLine;
 
@@ -34,25 +56,23 @@ public class FileManager {
             }
             writer.close();
             reader.close();
-            Files.delete(inputFile.toPath());
-            boolean successful = tempFile.renameTo(inputFile);
+            Files.delete(file.toPath());
+            return tempFile.renameTo(file);
         }
 
     }
 
-    static public void update(int line, String message) throws IOException {
-        File inputFile = new File("resources/files.txt");
+    boolean update(int line, String message) throws IOException {
         File tempFile = new File("resources/myTempFiles.txt");
         System.out.println(line);
         System.out.println(message);
-        try(BufferedReader reader = new BufferedReader(new FileReader(inputFile)); BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+        try(BufferedReader reader = new BufferedReader(new FileReader(file)); BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
             int counter = 0;
             String currentLine;
 
             while ((currentLine = reader.readLine()) != null) {
                 counter++;
                 if (counter == line) {
-                    System.out.println("I AM IN COUNTER IS LINE");
                     writer.write(message + System.getProperty("line.separator"));
                     continue;
                 }
@@ -60,17 +80,16 @@ public class FileManager {
             }
             writer.close();
             reader.close();
-            Files.delete(inputFile.toPath());
-            boolean successful = tempFile.renameTo(inputFile);
+            Files.delete(file.toPath());
+            return tempFile.renameTo(file);
 
         }
     }
 
-    static public JSONObject read(int line) throws IOException, JSONException {
-        File inputFile = new File("resources/files.txt");
+    JSONObject read() throws IOException, JSONException {
         JSONObject json = new JSONObject();
 
-        try(BufferedReader reader = new BufferedReader(new FileReader(new File("resources/files.txt")))){
+        try(BufferedReader reader = new BufferedReader(new FileReader(file))) {
             int counter = 0;
             String currentLine;
             while((currentLine = reader.readLine()) != null) {
@@ -81,6 +100,10 @@ public class FileManager {
         }
         return json;
 
+    }
+
+    boolean mockFunction(){
+        return false;
     }
 
 }

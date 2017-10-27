@@ -3,41 +3,49 @@ package com.restapi.apirest.rest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
-@ApplicationScoped
+//@ApplicationScoped
 @Path("/content")
 public class Endpoint {
-    
 
+    @Inject
+    FileManager manager = new FileManager();
     @GET
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getCustomer(Customer customer,
-                                 @QueryParam("deviceName") String deviceName) throws IOException, JSONException {
+    public Response getCustomer() {
+        try {
+            JSONObject json = manager.read();
+            return Response.ok(json.toString()).status(200)
+                    .build();
+        } catch (IOException e){
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
 
-        JSONObject json = FileManager.read(0);
-        return Response.ok(json.toString()).status(200)
-                .build();
     }
 
     @DELETE
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response deleteCustomer(Customer customer,
-                                 @QueryParam("deviceName") String deviceName) throws IOException {
-        printConsole(customer, deviceName);
-        String message = "";
-        FileManager.delete(Integer.parseInt(customer.getSurname()));
+    public Response deleteCustomer(Customer customer) {
+        try {
+            manager.delete(Integer.parseInt(customer.getLocationInFile()));
+        } catch (java.lang.NumberFormatException e){
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (IOException e){
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
 
-        return Response.ok(message).status(200)
+        return Response.ok().status(200)
                 .build();
     }
 
@@ -45,14 +53,14 @@ public class Endpoint {
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response createCustomer(Customer customer,
-                                                 @QueryParam("deviceName") String deviceName) throws IOException {
-        printConsole(customer, deviceName);
-        System.out.println("this is: " + customer.getAction());
-        String message = "";
-        FileManager.create(customer.getSurname());
+    public Response createCustomer(Customer customer) {
+        if(!customer.getSurname().matches(".*[a-z].*")) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
 
-        return Response.ok(message).status(200)
+        manager.create(customer.getSurname());
+
+        return Response.ok().status(201)
                 .build();
     }
 
@@ -60,21 +68,24 @@ public class Endpoint {
     @Path("/customer")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response updateCustomer(Customer customer,
-                                 @QueryParam("deviceName") String deviceName) throws IOException {
-        printConsole(customer, deviceName);
-        System.out.println("I am now in UPDATE");
-        String message = "";
-        FileManager.update(Integer.parseInt(customer.getSurname()),customer.getMessage());
-//        Response.status(Response.Status.NOT_FOUND);
-        return Response.ok(message).status(200)
-                .build();
-    }
+    public Response updateCustomer(Customer customer)  {
+        Pattern pattern = Pattern.compile("[a-zA-Z0-9]*");
+        Matcher matcher = pattern.matcher(customer.getSurname());
 
-    private void printConsole(Customer customer, @QueryParam("deviceName") String deviceName) {
-        System.out.println(deviceName);
-        System.out.println(customer.getAction());
-        System.out.println(customer.getSurname());
+        if(!matcher.matches()) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+
+        try {
+            manager.update(Integer.parseInt(customer.getLocationInFile()),customer.getSurname());
+        } catch (NumberFormatException e){
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (IOException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+
+        return Response.ok().status(200)
+                .build();
     }
 
 }

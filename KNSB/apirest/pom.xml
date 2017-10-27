@@ -61,11 +61,56 @@
       <artifactId>microprofile</artifactId>
     </dependency>
 
-    <!--spring dependencies -->
+    <!--json dependencies -->
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
-      <version>20090211</version>
+      <version>20171018</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.fge</groupId>
+      <artifactId>json-schema-validator</artifactId>
+      <version>2.2.6</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.fge</groupId>
+      <artifactId>json-schema-core</artifactId>
+      <version>1.2.5</version>
+    </dependency>
+
+    <!--junit/mockito dependencies -->
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.10.19</version>
+    </dependency>
+
+    <!--rest assured/cucumber dependencies -->
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>3.0.5</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>json-schema-validator</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>info.cukes</groupId>
+      <artifactId>cucumber-java8</artifactId>
+      <version>1.2.5</version>
     </dependency>
 
   </dependencies>
