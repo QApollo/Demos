@@ -27,7 +27,7 @@ public class Endpoint {
             return Response.ok(json.toString()).status(200)
                     .build();
         } catch (IOException e){
-            return Response.status(Response.Status.BAD_REQUEST).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
 
     }
@@ -39,8 +39,10 @@ public class Endpoint {
     public Response deleteCustomer(Customer customer) {
         try {
             manager.delete(Integer.parseInt(customer.getLocationInFile()));
-        } catch (IOException | java.lang.NumberFormatException e){
+        } catch (java.lang.NumberFormatException e){
             return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (IOException e){
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
 
         return Response.ok().status(200)
@@ -76,8 +78,10 @@ public class Endpoint {
 
         try {
             manager.update(Integer.parseInt(customer.getLocationInFile()),customer.getSurname());
-        } catch (IOException | NumberFormatException e){
+        } catch (NumberFormatException e){
             return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (IOException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
 
         return Response.ok().status(200)
