@@ -6,19 +6,19 @@ import java.util.*;
 import java.time.*;
 import java.time.format.*;
 
-public class Siri{
+public class Siri {
   public static String subjects[] = {"Your mom ", "Xander ", "Siri ", "Google ", "Qualogy ", "Aeron ", "Alfonso ", "Sheik ", "Elena ", "Apple ", "Koala ", "The Dutch ", "Octopus ", "She ", "He "};
   public static String verbs[] = {"eats ", "has ", "is ", "plays ", "goes to ", "studies ", "is doing ", "jumps through ", "waves at ", "is writing on the"};
   public static String objects[] = {"pineapples.", "dogs.", "candies.", "whiteboards.", "shoes.", "coffee."};
   public static DateTimeFormatter mediumF = DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM);
 
-  public static void main(String[] args){
+  public static void main(String[] args) {
 
     Random randIndex = new Random();
 
     Scanner sc = new Scanner(System.in);
     String input = sc.nextLine().trim().toLowerCase();
-    String output = "Hi.";
+    String output;
 
       while(!input.equals("exit")) {
         output = "";
@@ -26,7 +26,7 @@ public class Siri{
         input = sc.nextLine().trim().toLowerCase();
 
         // Time and Date
-        if (input.contains("what time")){
+        if (input.contains("what time")) {
           LocalTime time = LocalTime.now();
           System.out.print("It's " + mediumF.format(time));
 
@@ -34,13 +34,13 @@ public class Siri{
           LocalDate date = LocalDate.now();
           System.out.print("Today is " + date);
 
-        }else if (input.startsWith("are")||input.startsWith("is")||input.startsWith("am")){
-          if (input.contains("is")){
+        } else if (input.startsWith("are")||input.startsWith("is")||input.startsWith("am")) {
+          if (input.contains("is")) {
             System.out.print("No, ");
-          }else {
+          } else {
             System.out.print("Yes, ");
           }
-        }else{
+        } else {
           output = subjects[randIndex.nextInt(subjects.length)].concat(verbs[randIndex.nextInt(verbs.length)]).concat(objects[randIndex.nextInt(objects.length)]);
         }
 
