@@ -3,7 +3,7 @@ import java.util.*;
 public class MapDemo {
     
     public static void main(String[] args) {
-     Demo demo = new Demo();
+     MapDemo demo = new MapDemo();
      HashMap<String, Integer> products = new HashMap<>();
      
      demo.populateproductsMap(products);
@@ -24,12 +24,12 @@ public class MapDemo {
     }
 
     public<K, V> void printKeyValuePairInMap(HashMap<K,V> map) {
-        System.out.println("\n"+"key & values");
+        System.out.println("\n" + "key & values");
         map.forEach((k,v) -> System.out.println("Key:" + k + " "+ "Value:" + v));
     }
 
     private <K, V, U> void printValueFromMap(HashMap<K,V> map, U key){
-        System.out.println("value = "+map.get(key));
+        System.out.println("value = " + map.get(key));
     }
 
 }

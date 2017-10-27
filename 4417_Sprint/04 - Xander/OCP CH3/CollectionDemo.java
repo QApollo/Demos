@@ -20,57 +20,67 @@ public class CollectionDemo {
     }
 
     private void comparableExample() {
+        System.out.println("\n" + "Unsorted list");
+        System.out.println(peopleArrayListExample);
+
         Collections.sort(peopleArrayListExample);
 
+        System.out.println("\n" + "List sorted by natural order of name");
         System.out.println(peopleArrayListExample);
     }
 
     private void comparatorExample() {
         Comparator<People> byAgeAscending = (p1, p2) -> p1.getAge()-p2.getAge();
-        Comparator<People> byAgeDescending = (p1, p2) -> p2.getAge()-p1.getAge();     
+        Comparator<People> byAgeDescending = (p1, p2) -> p2.getAge()-p1.getAge();
 
         Collections.sort(peopleArrayListExample, byAgeAscending);
+
+        System.out.println("\n" + "People list sorted by age ascending");
         System.out.println(peopleArrayListExample);
 
         Collections.sort(peopleArrayListExample, byAgeDescending);
+
+        System.out.println("\n" + "People list sorted by age Descending");
         System.out.println(peopleArrayListExample);
     }
 
     private void setExamples(){
+
+        System.out.println("Initial set values");
         for(Integer value : setExample){
-            System.out.print(value+" ");
+            System.out.print(value + " ");
         }
 
-        System.out.println("\n"+setExample.add(5));
+        System.out.println("\n" + "Result of attempting to add a duplicate value to the set: " + setExample.add(5));
+        System.out.println("Values after add");
         for(Integer value : setExample){
-            System.out.print(value+" ");
+            System.out.print(value + " ");
         }
     }
 
     private void queueExample() {
         Iterator itr = queueExample.iterator();
 
-        System.out.println("\n");
+        System.out.println("\n" + "Initial queue values" + "\n");
         while(itr.hasNext()) {
-            System.out.print(itr.next()+" ");
+            System.out.print(itr.next() + " ");
         }
 
         queueExample.add(11);
         queueExample.offer(12);
-        
 
-        System.out.println("\n"+queueExample.peek());
 
+        System.out.println("\n" + "Values after add/offer");
         itr = queueExample.iterator();
         while(itr.hasNext()){
-            System.out.print(itr.next()+" ");
+            System.out.print(itr.next() + " ");
         }
 
-        System.out.println(queueExample.poll());
+        System.out.println("\n" + "Result of poll: " + queueExample.poll());
+        System.out.println("\n" + "Next value in queue using peek" + queueExample.peek());
 
-        queueExample.clear();
-
-        System.out.println(queueExample.poll());
+        queueExample.clear();        
+        System.out.println("result of poll when no more values in the queue are left: " + queueExample.poll());
     }
 
     private void populateArrayList() {
@@ -93,9 +103,6 @@ public class CollectionDemo {
             queueExample.add(i);
         }
     }
-
-
-
 
 }
 
