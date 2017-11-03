@@ -13,8 +13,8 @@ public class Demo {
     }
 
     public Human createHuman() {
-        Romanticus human = new Romanticus("Roman", "Male", 20);
-        // Worker human = new Worker("Wilma", "Female", 30);
+        // Romanticus human = new Romanticus("Roman", "Male", 20);
+        Worker human = new Worker("Wilma", "Female", 30);
 
         return human;
     }

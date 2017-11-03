@@ -17,7 +17,7 @@ public class Siri {
     Random randIndex = new Random();
 
     Scanner sc = new Scanner(System.in);
-    String input = sc.nextLine().trim().toLowerCase();
+    String input = ""; // = sc.nextLine().trim().toLowerCase();
     String output;
 
       while(!input.equals("exit")) {

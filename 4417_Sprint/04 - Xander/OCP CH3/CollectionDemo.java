@@ -77,9 +77,9 @@ public class CollectionDemo {
         }
 
         System.out.println("\n" + "Result of poll: " + queueExample.poll());
-        System.out.println("\n" + "Next value in queue using peek" + queueExample.peek());
+        System.out.println("\n" + "Next value in queue using peek" + " " + queueExample.peek());
 
-        queueExample.clear();        
+        queueExample.clear();
         System.out.println("result of poll when no more values in the queue are left: " + queueExample.poll());
     }
 
