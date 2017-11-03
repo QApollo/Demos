@@ -28,10 +28,11 @@ public class Siri {
       while(!input.equals("exit")) {
         input = sc.nextLine().trim().toLowerCase();
         if (input.length() != 0) {
-          output = objects.get(randomizer.nextInt(objects.size())).concat(" ").concat(verbs.get(randomizer.nextInt(verbs.size()))).concat(" ").concat(subjects.get(randomizer.nextInt(subjects.size())));
+          output = objects.get(randomizer.nextInt(objects.size()))
+                          .concat(" ").concat(verbs.get(randomizer.nextInt(verbs.size())))
+                          .concat(" ").concat(subjects.get(randomizer.nextInt(subjects.size())));
         }
-        System.out.println(output + " " + output.length());
+        System.out.println(output + ".");
       }
-    //System.out.println(verbs.get(randomizer.nextInt(verbs.size())) +" "+ objects.get(randomizer.nextInt(objects.size())));
   }
 }

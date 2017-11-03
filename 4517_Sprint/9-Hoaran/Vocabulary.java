@@ -1,7 +1,5 @@
 
 import java.util.*;
-import java.time.*;
-import java.time.format.*;
 import java.io.*;
 
  public class Vocabulary {
@@ -29,7 +27,6 @@ import java.io.*;
         String line = null;
        try(BufferedReader readerVerb = new BufferedReader(new FileReader(fileVerb)); BufferedReader readerNouns = new BufferedReader(new FileReader(fileNouns))) {
          while ((line = readerVerb.readLine()) != null) {
-          // System.out.println(line);
           verbs.add(line);
           }
         while ((line = readerNouns.readLine()) != null) {
