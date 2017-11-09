@@ -12,7 +12,11 @@ public class Demo {
     public Calculation addition = (x, y) -> x + y;
     public Calculation subtraction = (x, y) -> x - y;
     public Calculation multiplication = (x, y) -> x * y;
-    public Calculation division = (x, y) -> x / y;
+    public Calculation division = (x, y) -> (x == 0 | y == 0) ? 0 : x / y;
+
+    protected void doSomething() {
+
+    }
 
     public static void main(String[] args) {
         new Demo().startCalculator();
