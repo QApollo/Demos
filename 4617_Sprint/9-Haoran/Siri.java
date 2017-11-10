@@ -11,10 +11,14 @@ import java.time.format.*;
 
 public class Siri implements Chatbot {
 
-  public static String chatbotMode = "normal";
+  private String chatbotMode = "normal";
 
-  public Siri() {
-    System.out.println("Siri normal mode on.");
+  public void setChatbotMode(String chatbotMode){
+    this.chatbotMode = chatbotMode;
+  }
+
+  public String getChatbotMode(){
+    return this.chatbotMode;
   }
 
   public void outputTime() {
