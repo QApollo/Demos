@@ -5,9 +5,12 @@
 4. Abstract class and interfaces, default/static interface methods
 5. Polymorphism
 */
-import java.util.*;
-import java.time.*;
-import java.time.format.*;
+import java.util.List;
+import java.util.Random;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Siri implements Chatbot {
 
