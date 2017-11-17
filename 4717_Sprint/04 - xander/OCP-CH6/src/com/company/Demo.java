@@ -11,12 +11,12 @@ import java.util.stream.Collectors;
 
 public class Demo {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, DontShowException {
 
         File file;
-        try{
+        try {
           file = Demo.createFile();
-        }catch(IOException e) {
+        } catch(IOException e) {
             System.out.println(e.getMessage());
             throw new RuntimeException(e);
         }
@@ -29,11 +29,9 @@ public class Demo {
         try {
             int z = divideBy(10,0);
             LocalDateTime time = LocalDateTime.parse("test");
-        } catch (DateTimeException | ArithmeticException e) {
-            System.out.println(e);
+        } catch (ArithmeticException | DateTimeException e) {
+            throw new DontShowException("No details available");
         }
-
-
     }
 
     private static int divideBy(int x, int y) {
@@ -43,16 +41,17 @@ public class Demo {
 
     private static File createFile() throws IOException {
         File file = new File("./textfilestorage/test.txt");
-        if(file.createNewFile()){
+        if (file.createNewFile()){
             System.out.println("Created successfully");
         } else {
            System.out.println("File exists");
         }
+
         return file;
     }
 
     private static void writeStringToFile(String message, File file) throws IOException {
-        try(FileWriter writer = new FileWriter(file,true)) {
+        try (FileWriter writer = new FileWriter(file,true)) {
             writer.write(message + System.lineSeparator());
         } catch (IOException e) {
             e.printStackTrace();
@@ -60,7 +59,7 @@ public class Demo {
     }
 
     private static void writeStringToFile(String[] messages, File file) throws IOException {
-        try(FileWriter writer = new FileWriter(file,true)) {
+        try (FileWriter writer = new FileWriter(file,true)) {
             for ( String message: messages ) {
                 writer.write(message + System.lineSeparator());
             }
@@ -71,10 +70,10 @@ public class Demo {
 
     private static List<String> readFromFile(File file) throws IOException{
         List<String> lines;
-        try(BufferedReader reader = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             lines = reader.lines().collect(Collectors.toList());
         }
+
         return lines;
     }
-
 }
