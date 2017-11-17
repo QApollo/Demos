@@ -8,5 +8,5 @@ class SassySiri extends Siri {
     System.out.println("Your mama "
                         .concat(verbs.get(randIndex.nextInt(verbs.size())))
                         .concat(" ").concat(objects.get(randIndex.nextInt(objects.size()))));
-                      }
+  }
 }
