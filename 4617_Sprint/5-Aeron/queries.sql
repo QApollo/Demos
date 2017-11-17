@@ -1,68 +1,68 @@
-select comptype.ctpdescription, avg(distances.cdsdistance)
-from 
+SELECT comptype.ctpdescription, AVG(distances.cdsdistance)
+FROM 
 	 tbllbcompetitions competitions,
      tbllbcompdistances distances,
      tblcomptype comptype  
-where distances.cdscompetitionid = competitions.cmpid 
-and competitions.cmpcompetitiontype = comptype.ctpid
-group by comptype.ctpdescription
+WHERE distances.cdscompetitionid = competitions.cmpid 
+AND competitions.cmpcompetitiontype = comptype.ctpid
+GROUP BY comptype.ctpdescription
 
-select *
-from 
+SELECT *
+FROM 
 	 tbllbcompetitions competitions,
      tbllbcompdistances distances,
      tblcomptype comptype  
-where distances.cdscompetitionid = competitions.cmpid 
-and competitions.cmpcompetitiontype = comptype.ctpid
-and comptype.ctpdescription = 'NK Allround'
+WHERE distances.cdscompetitionid = competitions.cmpid 
+AND competitions.cmpcompetitiontype = comptype.ctpid
+AND comptype.ctpdescription = 'NK Allround'
 
-select distinct persons.prsfirstname || ' ' || persons.prslastname as fullname
-from 
+SELECT DISTINCT persons.prsfirstname || ' ' || persons.prslastname AS fullname
+FROM 
 	 tbllbcompetitions competitions,
      tbllbcompetitors competitors,
      tblpersons persons,
      tbllbcompdistances distances,
      tblcomptype comptype 
-where competitions.cmpid = competitors.cptcompetitionid 
-and competitors.cptpersonid = persons.prsid   
-and distances.cdscompetitionid = competitions.cmpid 
-and competitions.cmpcompetitiontype = comptype.ctpid
-and comptype.ctpdescription = 'NK Allround'
+WHERE competitions.cmpid = competitors.cptcompetitionid 
+AND competitors.cptpersonid = persons.prsid   
+AND distances.cdscompetitionid = competitions.cmpid 
+AND competitions.cmpcompetitiontype = comptype.ctpid
+AND comptype.ctpdescription = 'NK Allround'
 
-select distinct persons.prsfirstname || ' ' || persons.prslastname as fullname, persons.prsbirthdate
-from 
+SELECT distinct persons.prsfirstname || ' ' || persons.prslastname AS fullname, persons.prsbirthdate
+FROM 
 	 tbllbcompetitions competitions,
      tbllbcompetitors competitors,
      tblpersons persons,
      tbllbcompdistances distances,
      tblcomptype comptype 
-where competitions.cmpid = competitors.cptcompetitionid 
-and competitors.cptpersonid = persons.prsid   
-and distances.cdscompetitionid = competitions.cmpid 
-and competitions.cmpcompetitiontype = comptype.ctpid
-and comptype.ctpdescription = 'NK Allround'
-and persons.prsbirthdate > 19000000
+WHERE competitions.cmpid = competitors.cptcompetitionid 
+AND competitors.cptpersonid = persons.prsid   
+AND distances.cdscompetitionid = competitions.cmpid 
+AND competitions.cmpcompetitiontype = comptype.ctpid
+AND comptype.ctpdescription = 'NK Allround'
+AND persons.prsbirthdate > 19000000
 order by persons.prsbirthdate
 
-select to_date(prsbirthdate::text, 'YYYYMMDD')
-from 
+SELECT to_date(prsbirthdate::text, 'YYYYMMDD')
+FROM 
 	 tbllbcompetitions competitions,
      tbllbcompetitors competitors,
      tblpersons persons,
      tbllbcompdistances distances,
      tblcomptype comptype 
-where competitions.cmpid = competitors.cptcompetitionid 
-and competitors.cptpersonid = persons.prsid   
-and distances.cdscompetitionid = competitions.cmpid 
-and competitions.cmpcompetitiontype = comptype.ctpid
-and comptype.ctpdescription = 'NK Allround'
-and persons.prsbirthdate > 19000000
+WHERE competitions.cmpid = competitors.cptcompetitionid 
+AND competitors.cptpersonid = persons.prsid   
+AND distances.cdscompetitionid = competitions.cmpid 
+AND competitions.cmpcompetitiontype = comptype.ctpid
+AND comptype.ctpdescription = 'NK Allround'
+AND persons.prsbirthdate > 19000000
 
-select distinct comptype.ctpdescription, STDDEV(distances.cdsdistance) over (partition by comptype.ctpdescription)
-from 
+SELECT distinct comptype.ctpdescription, STDDEV(distances.cdsdistance) over (PARTITION BY comptype.ctpdescription)
+FROM 
 	 tbllbcompetitions competitions,
      tbllbcompdistances distances,
      tblcomptype comptype  
-where distances.cdscompetitionid = competitions.cmpid 
-and competitions.cmpcompetitiontype = comptype.ctpid
+WHERE distances.cdscompetitionid = competitions.cmpid 
+AND competitions.cmpcompetitiontype = comptype.ctpid
 
