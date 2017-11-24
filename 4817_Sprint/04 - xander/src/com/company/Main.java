@@ -42,14 +42,17 @@ public class Main {
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }finally {
-            if(service != null) service.shutdown();
+            if (service != null) {
+                service.shutdown();
+                }
+            }
         }
-    }
 
-    static Callable<int[]> initizalizeBogosort() {
+
+    private static Callable<int[]> initizalizeBogosort() {
         return () -> {
             int[] unsorted = new int[10];
-            for(int i = 0; i < unsorted.length; i++) {
+            for (int i = 0; i < unsorted.length; i++) {
                 unsorted[i] = r.nextInt(10000);
             }
 
@@ -61,7 +64,7 @@ public class Main {
 
     private static int[] bogoSortOneThread() {
         int[] unsorted = new int[10];
-        for(int i = 0; i < unsorted.length; i++) {
+        for (int i = 0; i < unsorted.length; i++) {
             unsorted[i] = r.nextInt(10000);
         }
 
