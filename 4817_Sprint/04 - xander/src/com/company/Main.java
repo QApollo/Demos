@@ -48,18 +48,19 @@ public class Main {
 
     static Callable<int[]> initizalizeBogosort() {
         return () -> {
-            int[] unsorted = new int[11];
+            int[] unsorted = new int[10];
             for(int i = 0; i < unsorted.length; i++) {
                 unsorted[i] = r.nextInt(10000);
             }
 
             int[] sorted = Bogosort.sort(unsorted);
+            Thread.sleep(1);
             return sorted;
         };
     }
 
     private static int[] bogoSortOneThread() {
-        int[] unsorted = new int[11];
+        int[] unsorted = new int[10];
         for(int i = 0; i < unsorted.length; i++) {
             unsorted[i] = r.nextInt(10000);
         }
