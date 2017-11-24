@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+    ubuntu1:
+        image: aeron92/my-ubuntu
+        links:
+            - ubuntu2
+        ports: 
+            - "80:80" 
+            - "8020:8020" 
+            - "50070:50070"
+            - "50075:50075"
+            - "50030:50030"
+        tty: true
+        expose:
+         - "80"
+         - "8020"
+         - "50070"
+         - "50075"
+         - "50030"
+         
+            
+    ubuntu2:
+        image: "ubuntu-telnet"
+        tty: true
