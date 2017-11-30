@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="countries.xsl"?>
+
+<data>
+    <country name="Liechtenstein">
+        <name>Liechtenstein</name>
+        <rank updated="yes">2</rank>
+        <year>2008</year>
+        <gdppc>141100</gdppc>
+        <neighbor name="Austria" direction="E"/>
+        <neighbor name="Switzerland" direction="W"/>
+    </country>
+    <country name="Singapore">
+        <name>Singapore</name>
+        <rank updated="yes">5</rank>
+        <year>2011</year>
+        <gdppc>59900</gdppc>
+        <neighbor name="Malaysia" direction="N"/>
+    </country>
+    <country name="Panama">
+        <name>Panama</name>
+        <rank updated="yes">69</rank>
+        <year>2011</year>
+        <gdppc>13600</gdppc>
+        <neighbor name="Costa Rica" direction="W"/>
+        <neighbor name="Colombia" direction="E"/>
+    </country>
+    <country name="Germany">
+        <name>Germany</name>
+        <rank updated="yes">12</rank>
+        <year>2017</year>
+        <gdppc>2501100</gdppc>
+    </country>
+    <country name="France">
+        <name>France</name>
+        <rank updated="yes">7</rank>
+        <year>1998</year>
+        <gdppc>521400</gdppc>
+    </country>
+    <country name="China">
+        <name>China</name>
+        <rank updated="yes">3</rank>
+        <year>2004</year>
+        <gdppc>91100</gdppc>
+    </country>
+</data>
