@@ -2,7 +2,6 @@ package com.company;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Main {
     private static File twuutFile = new File("twuuts.txt");
@@ -25,10 +24,7 @@ public class Main {
 
 
     private static boolean checkIfFileExists(File file) {
-        if (!file.exists()) {
-            return false;
-        }
-        return true;
+        return file.exists();
     }
 
     private static boolean createFile(File file) {

@@ -18,7 +18,7 @@ public class TwuutRetriever {
     List<TwuutDAO> twuuts = new ArrayList<>();
 
     String splitTwuuts[] = readTwuutsIntoString().split("§");
-    for (int i = 0; i < splitTwuuts.length -1; i++) {
+    for (int i = 0; i < splitTwuuts.length -1; i++) { //-1 because splitting on § leaves a new line as array element we don't have to consider it.
       twuuts.add(assembleTwuutDAO(splitTwuuts[i]));
     }
 
