@@ -120,7 +120,9 @@ public class Demo {
 
     private void checkInput(int input, String[] currentOptions) {
         if (!Arrays.asList(currentOptions).contains(Integer.toString(input))) {
-            System.out.println("Already chosen");
+            if (playerTurn) {
+                System.out.println("Already chosen");
+            }
         } else {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
@@ -153,6 +155,10 @@ public class Demo {
     }
 
     private void checkWin(String symbol) {
+        for (int i = 0; i < 20; i++) {
+            System.out.println();
+        }
+        
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (field[0][0] == symbol && field[0][1] == symbol && field[0][2] == symbol ||
