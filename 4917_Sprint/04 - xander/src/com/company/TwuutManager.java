@@ -8,14 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Twuut {
+public class TwuutManager {
   private File path;
   private String author;
   private List<String> twuutLines = new ArrayList<>();
   private static Scanner sc = new Scanner(System.in);
 
-   Twuut(File path) {
-    this.path = path;
+   TwuutManager(File path) {
+    if (path != null) {
+      this.path = path;
+    } else {
+      throw new IllegalArgumentException("Path cannot be null");
+    }
+
   }
 
    void userSetAuthor() {
@@ -32,8 +37,7 @@ public class Twuut {
     }
   }
 
-   void writeTwuutToFile() {
-    System.out.println(twuutLines);
+   private void writeTwuutToFile() {
     try(BufferedWriter writer = new BufferedWriter(new FileWriter(path, true))) {
 
       writer.write(author + "\n");

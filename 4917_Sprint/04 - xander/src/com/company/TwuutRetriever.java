@@ -1,6 +1,10 @@
 package com.company;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,11 +34,12 @@ public class TwuutRetriever {
 
     if (twuut != null) {
       assembledTwuut.setAuthor(
-      twuut.substring(0,twuut.indexOf("\n"))
+        twuut.substring(0,twuut.indexOf("\n"))
       );
 
       assembledTwuut.setTwuutText(
-      twuut.replace(assembledTwuut.getAuthor(),"").trim()
+      twuut.replace(
+          assembledTwuut.getAuthor(),"").trim()
       );
     }
 
