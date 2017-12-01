@@ -16,9 +16,9 @@ public class Main {
             }
         }
 
-        System.out.println("Who is the author of this TwuutManager?");
+        System.out.println("Who is the author of this Twuut?");
         twuut.userSetAuthor();
-        System.out.println("Write your TwuutManager use the enter key to insert a new line and write submit to twuut!");
+        System.out.println("Write your Twuut use the enter key to insert a new line and write submit to twuut!");
         twuut.userAddLinesToTwuut();
     }
 
