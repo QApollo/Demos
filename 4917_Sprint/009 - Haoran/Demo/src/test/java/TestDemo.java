@@ -43,17 +43,10 @@ public class TestDemo {
     }
 
 
-    @Test
+    @Test (expected = ArithmeticException.class)
 
     public void testArithmeticException(){
-        boolean test = false;
-        try {
-            Demo.calculate(1.0, 0.0, "/");
-        } catch(ArithmeticException e){
-            test = true;
-        }
-
-        assertTrue(test);
+        Demo.calculate(1.0, 0.0, "/");
 
     }
 
