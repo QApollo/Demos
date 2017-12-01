@@ -48,9 +48,9 @@ public class Demo{
                         results = calculate(num1, num2, operator);
                         break;
                     default:
-                        throw new IllegalArgumentException("Operator is not illegal.");
+                        throw new IllegalArgumentException("Operator is illegal.");
                 }
-            } catch (RuntimeException e) {
+            } catch (IllegalArgumentException | ArithmeticException e) {
                 System.out.println("Input illegal.");
             }
 
