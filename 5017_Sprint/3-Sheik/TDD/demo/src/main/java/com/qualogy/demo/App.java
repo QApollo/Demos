@@ -10,4 +10,12 @@ public class App
     {
         System.out.println( "Hello World!" );
     }
+
+    public App() {
+
+    }
+
+    public int sum(int a, int b) {
+        return a + b;
+    }
 }
