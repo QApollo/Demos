@@ -1,6 +1,6 @@
-public class WereRatFollower extends Follower{
+class WereRatFollower extends Follower{
 
-    public WereRatFollower() {
+    WereRatFollower() {
         this.name = "WereRatFollower";
         this.hitpoints = 10;
         this.attack = 5;

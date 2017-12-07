@@ -8,13 +8,13 @@ public class Demo {
         new Demo().playerInput();
     }
 
-    public void playerInput() {
+    private void playerInput() {
         System.out.println("Please choose what encounter you want to create: " +
                 "1 WereRat, 2 WereWolf, 3 WereBear");
         createEncounter(SCANNER.next());
     }
 
-    public void createEncounter(String input) {
+    private void createEncounter(String input) {
         LycanthropeFactory factory = null;
 
         switch (input) {

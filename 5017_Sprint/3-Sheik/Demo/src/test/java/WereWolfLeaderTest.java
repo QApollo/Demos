@@ -1,36 +1,36 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-public class WereBearFollowerTest {
+public class WereWolfLeaderTest {
     // Prepare
-    WereBearFollower obj = new WereBearFollower();
+    WereWolfLeader obj = new WereWolfLeader();
 
     @Test
-    public void wereBearFollowerNameTest() {
+    public void WereWolfLeaderNameTest() {
         // Prepare
 
         // Execute
         String actual = obj.name;
 
         // Assert
-        String expected = "WereBearFollower";
+        String expected = "WereWolfLeader";
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void wereBearFollowerHitpointsTest() {
+    public void WereWolfLeaderHitpointsTest() {
         // Prepare
 
         // Execute
         int actual = obj.hitpoints;
 
         // Assert
-        int expected = 30;
+        int expected = 25;
         Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void wereBearFollowerAttackTest() {
+    public void WereWolfLeaderAttackTest() {
         // Prepare
 
         // Execute
@@ -42,7 +42,7 @@ public class WereBearFollowerTest {
     }
 
     @Test
-    public void wereBearFollowerDefenceTest() {
+    public void WereWolfLeaderDefenceTest() {
         // Prepare
 
         // Execute
@@ -50,6 +50,18 @@ public class WereBearFollowerTest {
 
         // Assert
         int expected = 5;
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void WereWolfLeaderAbilityTest() {
+        // Prepare
+
+        // Execute
+        String actual = obj.ability;
+
+        // Assert
+        String expected = "Howl";
         Assert.assertEquals(expected, actual);
     }
 }

@@ -4,7 +4,7 @@ public class WereRatFactory implements LycanthropeFactory {
 
     private WereRatFactory() {}
 
-    public static synchronized WereRatFactory getInstance() {
+    static synchronized WereRatFactory getInstance() {
         if (instance == null) {
             instance = new WereRatFactory();
         }

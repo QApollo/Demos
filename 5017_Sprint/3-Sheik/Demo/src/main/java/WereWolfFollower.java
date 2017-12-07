@@ -1,6 +1,6 @@
-public class WereWolfFollower extends Follower{
+class WereWolfFollower extends Follower{
 
-    public WereWolfFollower() {
+    WereWolfFollower() {
         this.name = "WereWolfFollower";
         this.hitpoints = 15;
         this.attack = 5;
