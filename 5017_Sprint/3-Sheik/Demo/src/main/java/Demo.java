@@ -13,7 +13,7 @@ public class Demo {
         createEncounter(SCANNER.next());
     }
 
-    void createEncounter(String input) {
+    private void createEncounter(String input) {
         LycanthropeFactory factory = null;
 
         switch (input) {
