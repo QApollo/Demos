@@ -9,12 +9,11 @@ public class Demo {
     }
 
     private void playerInput() {
-        System.out.println("Please choose what encounter you want to create: " +
-                "1 WereRat, 2 WereWolf, 3 WereBear");
+        System.out.println("Please choose what encounter you want to create: 1 WereRat, 2 WereWolf, 3 WereBear");
         createEncounter(SCANNER.next());
     }
 
-    private void createEncounter(String input) {
+    void createEncounter(String input) {
         LycanthropeFactory factory = null;
 
         switch (input) {
