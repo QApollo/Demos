@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="/js/modernizr-1.5.min.js"></script>
+    <title>Custom Object Creation</title>
+    <script type="text/javascript">
+        function addBookDetails(){
+             var books = new Array(new Book(),new Book(), new Book());
+             document.forms["myform"]["result"].value = Object.values(books[0]);
+        }
+        function Book(){
+             var isbn     = document.forms["myform"]["ISBN"].value;
+             var length   = document.forms["myform"]["Length"].value;
+             var Genre    = document.forms["myform"]["genre"].value;
+             var Covering = document.forms["myform"]["covering"].value;
+             var Author   = document.forms["myform"]["author"].value;
+             var pageno   = document.forms["myform"]["pageno"].value;
+
+             this.ISBN   = isbn;
+             this.Length = length;
+             this.genre  = Genre;
+             this.covering = Covering;
+             this.author = Author;
+             this.currentPage = pageno;
+        }
+    </script>
+</head>
+<body>
+<form action="/cgi-bin/html5.cgi" method="get" name="myform">
+    ISBN      : <input type="text" name="ISBN" /><br/>
+    Length    : <input type="text" name="Length" /><br/>
+    genre     : <input type="text" name="genre" /><br/>
+    covering  : <input type="text" name="covering" /><br/>
+    author    : <input type="text" name="author" /><br/>
+    pageno    : <input type="text" name="pageno" /><br/>
+    <input type="button" value="Result"  onclick="addBookDetails();" /><br/>
+    <b><output name="result"/></b>
+</form>
+</body>
+</html>
