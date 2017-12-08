@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script type="text/javascript">
+      function showResult()
+      {
+         x = document.forms["myform"]["newinput"].value;
+         document.forms["myform"]["result"].value=x;
+      }
+   </script>
+    <title>Scope of Variable</title>
+</head>
+<body>
+<!-- output field -->
+<form action="/cgi-bin/html5.cgi" method="get" name="myform">
+    Enter a value : <input type="text" name="newinput" />
+    <input type="button" value="Result"  onclick="showResult();" />
+    <output name="result"></output>
+</form>
+
+<!-- PlaceHolder -->
+<form action="/cgi-bin/html5.cgi" method="get">
+    Enter email : <input type="email" name="newinput" placeholder="email@example.com"/>
+    <input type="submit" value="submit" />
+</form>
+
+<!-- autofocus -->
+<form action="/cgi-bin/html5.cgi" method="get">
+    Enter email : <input type="text" name="newinput" autofocus/>
+    <p>Try to submit using Submit button</p>
+    <input type="submit" value="submit" />
+</form>
+
+<!-- required -->
+<form action="/cgi-bin/html5.cgi" method="get">
+    Enter email : <input type="text" name="newinput" required/>
+    <p>Try to submit using Submit button</p>
+    <input type="submit" value="submit" />
+</form>
+</body>
+</html>
