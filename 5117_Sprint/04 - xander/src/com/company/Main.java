@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static com.company.Constants.TWUUTS_DIR;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -18,7 +20,7 @@ public class Main {
     }
 
     private static void createDir() {
-        Path twuutDir = Paths.get("./twuuts/");
+        Path twuutDir = Paths.get(TWUUTS_DIR);
         if (!Files.isDirectory(twuutDir)) {
             try {
                 Files.createDirectory(twuutDir);

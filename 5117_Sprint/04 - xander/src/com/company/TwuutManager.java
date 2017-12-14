@@ -10,12 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static com.company.Constants.*;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class TwuutManager {
   private static TwuutManager instance = null;
 
-  private Path twuutDir = Paths.get("./twuuts/");
+  private Path twuutDir = Paths.get(TWUUTS_DIR);
   private Path twuutFileToWrite;
   private String author;
   private List<String> twuutLines = new ArrayList<>();
@@ -58,7 +59,7 @@ public class TwuutManager {
     } catch (IOException e) {
       e.printStackTrace();
     }
-   return Paths.get( numberOfTwuuts + "_" + this.author + ".txt");
+   return Paths.get( numberOfTwuuts + "_" + this.author + TXT_EXTENSION);
   }
 
   private void createNewTwuutFile() {
@@ -74,17 +75,17 @@ public class TwuutManager {
    private void writeTwuutToFile() {
     if(twuutFileToWrite != null) {
       if (!Files.exists(twuutFileToWrite)) {
-        System.out.println("Non existant File");
+        System.out.println("Non existent File");
         System.exit(0);
       }
 
       try (BufferedWriter writer = Files.newBufferedWriter(twuutFileToWrite, UTF_8, StandardOpenOption.APPEND) ) {
 
-        writer.write(author + "\n");
+        writer.write(author + NEW_LINE);
         for (String s : twuutLines) {
-          writer.write(s + "\n");
+          writer.write(s + NEW_LINE);
           }
-        writer.write("§");
+        writer.write(SQUIGGLY_CHAR);
         writer.flush();
       } catch (IOException e) {
         e.printStackTrace();
