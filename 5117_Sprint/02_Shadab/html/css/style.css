@@ -1,0 +1,29 @@
+#actions {
+     position: fixed;
+     top: 10px;
+     background: lightBlue;
+     padding:8px;
+   }
+   h1 {
+     position: relative;
+     bottom: 10px;
+     left: 280px;
+   }
+   #status {
+     position: relative;
+     font-size: 120%;
+     background: darkslategrey;
+     padding: 20px;
+     border-radius: 20px;
+   }
+   article {
+     position: relative;
+     color:yellow;
+     background: darkgray;
+     padding: 25px;
+   }
+   input {
+     width: 80px;
+     height: 35px;
+     font-size: 120%;
+   }
