@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
-public class Demo {
+public class Demo{
 
     public static IntStream generateDoubleStream(int size) {
         Random randomGenerator = new Random();
@@ -16,7 +16,7 @@ public class Demo {
 
         //The regular counting method
         long startTime = System.currentTimeMillis();
-        long regularCounts = RegularCounting.regularCount(generateDoubleStream(size));
+        long regularCounts = generateDoubleStream(size).distinct().count();
         long endTime = System.currentTimeMillis();
 
         System.out.println("Total time for regular counting method is " + (endTime - startTime));
