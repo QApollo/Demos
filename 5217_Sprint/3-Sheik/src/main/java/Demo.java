@@ -24,18 +24,7 @@ public class Demo {
     }
 
     private void displayInstructions() {
-        System.out.print("A farmer lives on a small plot of land next to a river. \n" +
-                "One day, he travels across the river in a small boat and \n" +
-                "purchases a fox, a chicken, and a bag of corn from a feed \n" +
-                "and supply store. When the farmer returns to his boat to \n" +
-                "cross the river again and go home, he realizes he has a dilemma.\n" +
-                "\n" +
-                "The farmer can only take one item in his small boat at a time, \n" +
-                "otherwise he risks capsizing. He cannot leave the fox alone with \n" +
-                "the chicken, because the fox will eat the chicken. He cannot leave \n" +
-                "the chicken alone with the corn, because the chicken with eat the corn.\n" +
-                "\n" +
-                "How does the farmer successfully get all three items across the river?\n");
+        System.out.print(Constants.INSTRUCTIONS);
     }
 
     private void displayField(List thisSide, Player player, River river, List otherSide) {
@@ -98,9 +87,9 @@ public class Demo {
             }
         }
 
-        if (thisSide.size() == 0 & otherSide.size() == 3) {
+        if (thisSide.size() == Constants.ZERO & otherSide.size() == Constants.THREE) {
             displayField(thisSide, player, river, otherSide);
-            System.out.print("YOU WIN");
+            System.out.print(Constants.YOU_WIN);
             gameOver = true;
         }
         return gameOver;

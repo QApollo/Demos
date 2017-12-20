@@ -5,16 +5,16 @@ public class Player {
 
     Integer checkInput(String input, List thisSide, List otherSide) {
         switch (input.toLowerCase()) {
-            case "chicken":
-                input = "Chicken";
+            case Constants.CHICKEN_LOWERCASE:
+                input = Constants.CHICKEN_UPPERCASE;
                 break;
-            case "corn":
-                input = "Corn";
+            case Constants.CORN_LOWERCASE:
+                input = Constants.CORN_UPPERCASE;
                 break;
-            case "fox":
-                input = "Fox";
+            case Constants.FOX_LOWERCASE:
+                input = Constants.FOX_UPPERCASE;
                 break;
-            case "player":
+            case Constants.PLAYER_LOWERCASE:
                 startingSide = !startingSide;
                 return null;
         }
@@ -36,7 +36,7 @@ public class Player {
                 return list.indexOf(obj);
             }
         }
-        System.out.print(input + " not here.\n\n");
+        System.out.print(input + Constants.NOT_HERE);
         return null;
     }
 
@@ -46,6 +46,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player";
+        return Constants.PLAYER_UPPERCASE;
     }
 }

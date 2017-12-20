@@ -5,6 +5,6 @@ public class Corn extends Neighbour {
 
     @Override
     public String toString() {
-        return "Corn";
+        return Constants.CORN_UPPERCASE;
     }
 }

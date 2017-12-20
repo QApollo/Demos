@@ -5,10 +5,10 @@ public abstract class Neighbour {
 
     public boolean checkNeighbour(List<? extends Neighbour> field) {
         int index = field.indexOf(this);
-        int indexPrev = index - 1;
-        int indexNext = index + 1;
+        int indexPrev = index - Constants.ONE;
+        int indexNext = index + Constants.ONE;
 
-        if (indexPrev >= 0) {
+        if (indexPrev >= Constants.ZERO) {
             checkEatNeighbour(field.get(indexPrev));
         }
 
