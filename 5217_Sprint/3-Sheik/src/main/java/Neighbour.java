@@ -1,6 +1,6 @@
 import java.util.List;
 
-public abstract class Neighbour {
+abstract class Neighbour {
     boolean eatNeighbour = false;
 
     public boolean checkNeighbour(List<? extends Neighbour> field) {
