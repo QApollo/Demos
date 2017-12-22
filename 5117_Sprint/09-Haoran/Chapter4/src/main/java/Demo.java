@@ -11,8 +11,9 @@ public class Demo{
     }
 
     public static void main(String[] args){
+        PCounting pCounting = PCounting.getInstance();
 
-        int size = 500000;
+        int size = 1000000;
 
         //The regular counting method
         long startTime = System.currentTimeMillis();
@@ -26,7 +27,7 @@ public class Demo{
         startTime = System.currentTimeMillis();
         double[] pCounts = new double[5];
         for (int i = 0; i<5; i++) {
-            pCounts[i] = PCounting.pCount(generateDoubleStream(size), 10);
+            pCounts[i] = pCounting.pCount(generateDoubleStream(size), 10);
         }
         endTime = System.currentTimeMillis();
 
