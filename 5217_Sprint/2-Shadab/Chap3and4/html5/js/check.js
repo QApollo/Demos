@@ -72,10 +72,9 @@ function getValidAuthorCode() {
       var tagval = "authorCode";
       x = xmlDoc.getElementsByTagName(tagval);
       for (i = 0; i< x.length; i++) {
-         if(regExpression.test(x[i].childNodes[0].nodeValue))
+         if(regExpression.test(x[i].childNodes[0].nodeValue)){
              txt += x[i].childNodes[0].nodeValue + "<br>";
-         else
-             continue;
+	}        
       }
       document.getElementById("getResult").innerHTML = txt;
 }
@@ -96,10 +95,9 @@ function getInValidAuthorCode() {
       var tagval = "authorCode";
       x = xmlDoc.getElementsByTagName(tagval);
       for (i = 0; i< x.length; i++) {
-         if(!regExpression.test(x[i].childNodes[0].nodeValue))
+         if(!regExpression.test(x[i].childNodes[0].nodeValue)){
              txt += x[i].childNodes[0].nodeValue + "<br>";
-         else
-             continue;
+	}        
       }
       document.getElementById("getResult").innerHTML = txt;
 }
