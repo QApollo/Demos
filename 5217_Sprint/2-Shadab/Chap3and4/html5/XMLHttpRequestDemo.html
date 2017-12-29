@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo HTML5 70-480 Chapter 3 and 4</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="./js/check.js"> </script>
+</head>
+<body>
+      <div>
+          <hgroup>
+              <h1>Search Book Details</h1>
+              <h2>Search Based on following categories</h2>
+          </hgroup>
+      </div>
+      <div>
+            <button onclick="getXMLData()" id="btnGetXMLData">Get books detail</button><br><br>
+            <button onclick="getBookByTagName()">GetElementByTagName</button>
+            <input type="text" id="GetElementByTagNameText"/><br><br>
+            <button onclick="getBookByXpath()">GetElementByXpath</button>
+            <input type="text" id="GetElementByXpathText"/><br><br>
+            <!-- Print valid author code -->
+            <button onclick="getValidAuthorCode()">GetValidAuthorCode</button><br><br>
+            <!-- Print invalid author code -->
+            <button onclick="getInValidAuthorCode()">GetInvalidAuthorCode</button><br><br>
+            <button onclick="eraseText()">Clear</button><br><br>
+            <textarea id="otherCommentsText" rows="10" cols="100"  spellcheck="true"></textarea>
+            <p id="getResult"></p>
+      </div>
+</body>
+</html>
