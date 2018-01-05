@@ -1,0 +1,6 @@
+{
+ "sources": [
+   "data/*",
+   "data/svg/*"
+ ]
+}

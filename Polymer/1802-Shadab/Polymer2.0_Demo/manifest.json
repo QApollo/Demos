@@ -1,0 +1,7 @@
+{
+  "name": "whose-flag",
+  "short_name": "whose-flag",
+  "description": "Match flags to their countries!",
+  "start_url": "/",
+  "display": "standalone"
+}
