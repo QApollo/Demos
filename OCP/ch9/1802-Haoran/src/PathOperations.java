@@ -20,6 +20,7 @@ public class PathOperations {
                 }
             });
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -32,6 +33,7 @@ public class PathOperations {
             }
             Files.createDirectories(createPath);
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
